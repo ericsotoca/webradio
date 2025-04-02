@@ -5,250 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOTOCA WebRadio - Expérience Musicale Unique</title>
     <style>
-        /* ... (votre CSS reste inchangé) ... */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #5c67f2;
-        }
-
-        .radio-info {
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            text-align: center;
-            line-height: 1.6;
-            color: #aaa;
-        }
-
-        .genre-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .genre-button {
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .genre-button:hover {
-            background-color: #5c67f2;
-            transform: translateY(-2px);
-        }
-
-        .genre-button.active {
-            background-color: #5c67f2;
-        }
-
-        .loading-message {
-            text-align: center;
-            padding: 20px;
-            font-style: italic;
-            color: #888;
-        }
-
-        .iframe-container {
-            width: 100%;
-            margin-bottom: 20px;
-            background-color: #222;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        #suno-iframe {
-            display: block;
-            border: none;
-            width: 100%;
-            height: 240px;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .button-next, .button-history {
-            display: inline-block;
-            background-color: #5c67f2;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3);
-        }
-
-        .button-next:hover, .button-history:hover {
-            background-color: #4a54cc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4);
-        }
-
-        .button-next:active, .button-history:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(92, 103, 242, 0.2);
-        }
-
-        .history-container {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #222;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .history-container h3 {
-            margin-bottom: 15px;
-            color: #ccc;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-        }
-
-        .history-list {
-            list-style-type: none;
-        }
-
-        .history-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-            color: #aaa;
-        }
-
-        .history-list li:last-child {
-            border-bottom: none;
-        }
-
-        .support-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: rgba(92, 103, 242, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(92, 103, 242, 0.3);
-        }
-
-        .support-title {
-            font-size: 1.5em;
-            color: #5c67f2;
-            margin-bottom: 15px;
-        }
-
-        .support-text {
-            margin-bottom: 20px;
-            line-height: 1.5;
-            color: #aaa;
-        }
-
-        .support-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .support-button {
-            display: inline-block;
-            background-color: #f28c31;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .support-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(242, 140, 49, 0.4);
-        }
-
-        .paypal-button {
-            background-color: #0070ba;
-        }
-
-        .attribution {
-            margin-top: 40px;
-            padding-top: 20px;
-            font-size: 0.8em;
-            color: #666;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-
-        .attribution a {
-            color: #5c67f2;
-            text-decoration: none;
-        }
-
-        .attribution a:hover {
-            text-decoration: underline;
-        }
-
-        .now-playing {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: #aaa;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            .genre-buttons {
-                gap: 8px;
-            }
-
-            .genre-button {
-                padding: 8px 16px;
-                font-size: 0.8em;
-            }
-        }
+        /* Styles CSS (Identiques à la version précédente avec l'overlay) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #121212; color: #ffffff; padding: 20px; max-width: 800px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 1px solid #333; }
+        h1 { font-size: 2.5em; margin-bottom: 10px; color: #5c67f2; }
+        .radio-info { max-width: 600px; margin: 0 auto 30px auto; text-align: center; line-height: 1.6; color: #aaa; }
+        .genre-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
+        .genre-button { background-color: #333; color: white; border: none; border-radius: 20px; padding: 10px 20px; font-size: 0.9em; cursor: pointer; transition: all 0.3s ease; }
+        .genre-button:hover { background-color: #5c67f2; transform: translateY(-2px); }
+        .genre-button.active { background-color: #5c67f2; }
+        .loading-message { text-align: center; padding: 60px 20px; font-style: italic; color: #888; min-height: 240px; display: flex; justify-content: center; align-items: center;}
+        .iframe-container { width: 100%; margin-bottom: 20px; background-color: #222; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); min-height: 240px; }
+        #suno-iframe { display: block; border: none; width: 100%; height: 240px; }
+        .controls { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+        .button-next, .button-history { display: inline-block; background-color: #5c67f2; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3); }
+        .button-next:hover, .button-history:hover { background-color: #4a54cc; transform: translateY(-2px); box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4); }
+        .button-next:active, .button-history:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(92, 103, 242, 0.2); }
+        .history-container { margin-top: 30px; padding: 15px; background-color: #222; border-radius: 8px; display: none; }
+        .history-container h3 { margin-bottom: 15px; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .history-list { list-style-type: none; padding-left: 0; /* Reset */ }
+        .history-list li { padding: 8px 0; border-bottom: 1px solid #333; color: #aaa; }
+        .history-list li:last-child { border-bottom: none; }
+        .support-section { text-align: center; margin: 40px 0; padding: 20px; background-color: rgba(92, 103, 242, 0.1); border-radius: 8px; border: 1px solid rgba(92, 103, 242, 0.3); }
+        .support-title { font-size: 1.5em; color: #5c67f2; margin-bottom: 15px; }
+        .support-text { margin-bottom: 20px; line-height: 1.5; color: #aaa; }
+        .support-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .support-button { display: inline-block; background-color: #f28c31; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; }
+        .support-button:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(242, 140, 49, 0.4); }
+        .paypal-button { background-color: #0070ba; }
+        .attribution { margin-top: 40px; padding-top: 20px; font-size: 0.8em; color: #666; text-align: center; border-top: 1px solid #333; }
+        .attribution a { color: #5c67f2; text-decoration: none; }
+        .attribution a:hover { text-decoration: underline; }
+        .now-playing { text-align: center; margin-top: 15px; font-size: 0.9em; color: #aaa; min-height: 1.2em; }
+        #initial-play-overlay { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; background-color: rgba(34, 34, 34, 0.8); border-radius: 8px; cursor: pointer; min-height: 240px; text-align: center; transition: opacity 0.3s ease-out; /* Changé ease->ease-out */}
+        #initial-play-overlay.hidden { opacity: 0; pointer-events: none; position: absolute; /* Pour ne plus prendre de place */}
+        #start-radio-button { background-color: #5c67f2; color: white; padding: 15px 30px; border: none; border-radius: 30px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease; margin-top: 15px; }
+        #start-radio-button:hover { background-color: #4a54cc; transform: scale(1.05); }
+        .overlay-icon { font-size: 3em; color: #5c67f2; margin-bottom: 10px; }
+        .overlay-text { font-size: 0.9em; color: #ccc; margin-top: 15px; }
+        #iframe-target { display: none; min-height: 240px; }
+        @media (max-width: 600px) { body { padding: 10px; } h1 { font-size: 1.8em; } .controls { flex-direction: column; } .genre-buttons { gap: 8px; } .genre-button { padding: 8px 16px; font-size: 0.8em; } #start-radio-button { padding: 12px 24px; font-size: 1em;} .overlay-icon { font-size: 2.5em;} }
     </style>
 </head>
 <body>
@@ -266,9 +63,14 @@
         <button class="genre-button">Électronique</button>
     </div>
 
-    <div class="iframe-container">
-        <div id="player-container">
-            <p class="loading-message">Chargement d'un morceau aléatoire...</p>
+    <div class="iframe-container" id="player-container">
+        <div id="initial-play-overlay">
+            <span class="overlay-icon">🎵</span>
+            <button id="start-radio-button">Lancer la Radio</button>
+            <p class="overlay-text">(Cliquez pour démarrer)</p>
+        </div>
+        <div id="iframe-target">
+           {/* L'iframe sera injectée ici */}
         </div>
     </div>
 
@@ -283,9 +85,7 @@
 
     <div class="history-container" id="history-container">
         <h3>Historique de lecture</h3>
-        <ul class="history-list" id="history-list">
-            <!-- L'historique sera inséré ici par JavaScript -->
-        </ul>
+        <ul class="history-list" id="history-list"></ul>
     </div>
 
     <div class="support-section">
@@ -302,287 +102,398 @@
     </div>
 
     <script>
-        // --- DÉBUT DES MODIFICATIONS ---
-
-        // Liste des morceaux Suno (iframes)
-        // !!! IMPORTANT: Ajoutez la propriété 'duration' en secondes pour chaque morceau !!!
+        // ==============================================================
+        // == CONFIGURATION - À REMPLIR SOIGNEUSEMENT ==
+        // ==============================================================
         const sunoTracks = [
-            {
-                id: "b34a68c5-d549-435f-9132-7e1af773ad3d",
-                title: "Jazz Cool Evening", // Titres plus descriptifs si possible
-                artist: "Suno AI",
-                genre: "Jazz",
-                duration: 191 // Exemple : 3 minutes et 5 secondes
-            },
-            {
-                id: "dd8ca77f-20d8-46fa-9c41-97aad8d2c5f3",
-                title: "Smooth Night Ride",
-                artist: "Suno AI",
-                genre: "Jazz",
-                duration: 239 // Exemple : 3 minutes et 30 secondes
-            },
-            {
-                id: "32cefad4-9525-4a91-8c13-c782bdd2ab76",
-                title: "Upbeat Morning Cafe",
-                artist: "Suno AI",
-                genre: "Jazz",
-                duration: 74 // Exemple : 3 minutes et 15 secondes
-            },
-            // Ajoutez ici d'autres morceaux avec leur ID, titre, artiste, genre ET duration
-            {
-                id: "948b8276-6714-460f-b526-033354e094ce",
-                title: "Cancer",
-                artist: "Joy'elle",
-                genre: "Pop",
-                duration: 170 // Exemple : 3 minutes
-            },
-            
+            // EXEMPLES - REMPLACEZ PAR VOS DONNÉES RÉELLES ET VALIDES
+            { id: "b34a68c5-d549-435f-9132-7e1af773ad3d", title: "Jazz Cool Evening", artist: "Suno AI", genre: "Jazz", duration: 191 }, // Durée en secondes
+            { id: "dd8ca77f-20d8-46fa-9c41-97aad8d2c5f3", title: "Smooth Night Ride", artist: "Suno AI", genre: "Jazz", duration: 239 },
+            { id: "32cefad4-9525-4a91-8c13-c782bdd2ab76", title: "Upbeat Morning Cafe", artist: "Suno AI", genre: "Jazz", duration: 74 }, // Attention durée courte ici
+            { id: "a1b2c3d4-e5f6-a1b2-c3d4-e5f6a1b2c3d4", title: "Exemple Pop Rythmé", artist: "Suno AI", genre: "Pop", duration: 185 }, // METTRE UN VRAI ID
+            { id: "f1e2d3c4-b5a6-f1e2-d3c4-b5a6f1e2d3c4", title: "Exemple Rock Énergique", artist: "Suno AI", genre: "Rock", duration: 210 }, // METTRE UN VRAI ID
+
+            // Ajoutez ici AUTANT de morceaux que vous voulez,
+            // MAIS ASSUREZ-VOUS que chaque 'id' est VALIDE et chaque 'duration' est CORRECTE (en secondes)
+            // { id: "VOTRE_ID_SUNO_VALID", title: "Titre", artist: "Artiste", genre: "Genre", duration: SECONDES },
         ];
+        // ==============================================================
+        // == FIN CONFIGURATION ==
+        // ==============================================================
 
-        // État actuel du genre sélectionné
+
+        // --- Variables globales ---
         let currentGenre = "Tous les styles";
-
-        // Variable pour stocker l'ID du morceau en cours
         let currentTrackId = null;
-
-        // Variable pour stocker l'ID du minuteur pour le prochain morceau
         let nextTrackTimer = null;
+        let radioHasStarted = false; // Indicateur pour le premier lancement
 
-        // --- FIN DES MODIFICATIONS INITIALES ---
+        // --- Éléments du DOM (pour éviter les recherches répétées) ---
+        const genreButtonsContainer = document.querySelector('.genre-buttons');
+        const playerContainer = document.getElementById('player-container');
+        const initialOverlay = document.getElementById('initial-play-overlay');
+        const startButton = document.getElementById('start-radio-button');
+        const iframeTarget = document.getElementById('iframe-target');
+        const nowPlayingText = document.getElementById('now-playing-text');
+        const nextTrackButton = document.getElementById('next-track');
+        const toggleHistoryButton = document.getElementById('toggle-history');
+        const historyContainer = document.getElementById('history-container');
+        const historyList = document.getElementById('history-list');
 
-        // Fonction pour obtenir l'historique de lecture depuis le localStorage
+
+        // --- Fonctions Utilitaires ---
+
         function getPlayHistory() {
-            const history = localStorage.getItem('sunoRadioHistory');
-            return history ? JSON.parse(history) : [];
-        }
-
-        // Fonction pour mettre à jour l'historique de lecture
-        function updatePlayHistory(trackId) {
-            let history = getPlayHistory();
-
-            const track = sunoTracks.find(track => track.id === trackId);
-            if (track) {
-                // Empêche d'ajouter la même piste consécutivement à l'historique (si rechargement rapide)
-                if (history.length === 0 || history[0].id !== trackId) {
-                    history.unshift({
-                        id: trackId,
-                        title: track.title || `Morceau ${track.id.substring(0, 6)}`, // Titre par défaut
-                        artist: track.artist || "Artiste inconnu",
-                        genre: track.genre || "Inconnu",
-                        timestamp: new Date().toISOString()
-                    });
-
-                    if (history.length > 10) { // Limite l'historique aux 10 derniers
-                        history = history.slice(0, 10);
-                    }
-
-                    localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
-                    updateHistoryDisplay(); // Met à jour l'affichage immédiatement
-                }
-                 // Met à jour le texte "Now Playing" même si la piste est la même
-                document.getElementById('now-playing-text').textContent = `En cours: ${track.title || 'Titre inconnu'} par ${track.artist || 'Artiste inconnu'}`;
-            } else {
-                 document.getElementById('now-playing-text').textContent = 'Chargement...';
+            try {
+                const history = localStorage.getItem('sunoRadioHistory');
+                return history ? JSON.parse(history) : [];
+            } catch (e) {
+                console.error("Erreur lors de la lecture de l'historique depuis localStorage:", e);
+                return [];
             }
         }
 
+        function updatePlayHistory(trackId) {
+            if (!trackId) return;
+            let history = getPlayHistory();
+            const track = sunoTracks.find(t => t.id === trackId);
 
-        // Fonction pour mettre à jour l'affichage de l'historique
+            if (track) {
+                // Mettre à jour l'affichage "En cours"
+                nowPlayingText.textContent = `En cours: ${track.title || 'Titre inconnu'} par ${track.artist || 'Artiste inconnu'}`;
+
+                // Ajouter à l'historique seulement si différent du dernier élément
+                if (history.length === 0 || history[0].id !== trackId) {
+                    history.unshift({
+                        id: trackId,
+                        title: track.title || `Morceau ${track.id.substring(0, 6)}`,
+                        artist: track.artist || "Inconnu",
+                        genre: track.genre || "Inconnu",
+                        timestamp: new Date().toISOString()
+                    });
+                    // Limiter la taille de l'historique
+                    if (history.length > 15) { // Un peu plus grand ?
+                        history = history.slice(0, 15);
+                    }
+                    try {
+                        localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
+                        updateHistoryDisplay(); // Mettre à jour l'affichage si l'historique est visible
+                    } catch (e) {
+                        console.error("Erreur lors de la sauvegarde de l'historique dans localStorage:", e);
+                    }
+                }
+            } else {
+                console.warn(`Piste avec ID ${trackId} non trouvée dans sunoTracks pour l'historique.`);
+                nowPlayingText.textContent = 'Chargement...';
+            }
+        }
+
         function updateHistoryDisplay() {
-            const historyList = document.getElementById('history-list');
-            const history = getPlayHistory();
+            if (!historyContainer || !historyList) return; // Vérifier si les éléments existent
+            // Mettre à jour seulement si l'historique est visible
+            if (historyContainer.style.display !== 'block') {
+                return;
+            }
 
-            historyList.innerHTML = ''; // Vide la liste actuelle
+            const history = getPlayHistory();
+            historyList.innerHTML = ''; // Vider
 
             if (history.length === 0) {
-                historyList.innerHTML = '<li>Aucun morceau dans l\'historique pour le moment.</li>';
+                historyList.innerHTML = '<li>Aucun morceau dans l\'historique.</li>';
             } else {
                 history.forEach(item => {
-                    const listItem = document.createElement('li');
-                    const date = new Date(item.timestamp);
-                    // Formatage plus lisible de l'heure
-                    const formattedTime = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-                    listItem.textContent = `${item.title} par ${item.artist} (${item.genre}) - Écouté à ${formattedTime}`;
-                    historyList.appendChild(listItem);
+                    const li = document.createElement('li');
+                    try {
+                         const date = new Date(item.timestamp);
+                         const time = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                         li.textContent = `${item.title || '?'} par ${item.artist || '?'} (${item.genre || '?'}) - ${time}`;
+                    } catch (e) {
+                         li.textContent = `${item.title || '?'} par ${item.artist || '?'} - Heure inconnue`; // Fallback
+                    }
+                    historyList.appendChild(li);
                 });
             }
         }
 
-        // Fonction pour filtrer les morceaux par genre
         function getTracksByGenre(genre) {
             if (genre === "Tous les styles" || !genre) {
-                return [...sunoTracks]; // Retourne une copie pour éviter de modifier l'original
+                return [...sunoTracks]; // Retourne une copie
             } else {
                 return sunoTracks.filter(track => track.genre === genre);
             }
         }
 
-        // Fonction pour sélectionner un morceau aléatoire (évite les 2 derniers joués si possible)
         function selectRandomTrack() {
             const history = getPlayHistory();
             let availableTracks = getTracksByGenre(currentGenre);
 
-            // Si aucun morceau pour le genre sélectionné, revient à "Tous les styles"
             if (availableTracks.length === 0) {
                 console.warn(`Aucun morceau trouvé pour le genre "${currentGenre}". Retour à "Tous les styles".`);
                 currentGenre = "Tous les styles";
-                updateGenreButtons(); // Met à jour visuellement les boutons
+                updateGenreButtons();
                 availableTracks = getTracksByGenre(currentGenre);
             }
 
-             // S'il n'y a plus de pistes du tout
             if (availableTracks.length === 0) {
-                console.error("Aucun morceau disponible dans sunoTracks.");
-                return null; // Ne peut rien sélectionner
+                console.error("Aucun morceau disponible dans la liste sunoTracks ! Vérifiez la configuration.");
+                return null; // Important de retourner null si rien n'est dispo
             }
 
-            // Essaye d'éviter de répéter les 2 derniers morceaux joués
+            // Éviter les 2 derniers joués si assez de choix
             if (history.length > 0 && availableTracks.length > 2) {
-                 // Prend les IDs des 2 derniers morceaux uniques de l'historique
                 const recentTrackIds = [...new Set(history.slice(0, 2).map(item => item.id))];
                 const filteredTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
-                // S'il reste des morceaux après filtrage, utilise cette liste filtrée
                 if (filteredTracks.length > 0) {
                     availableTracks = filteredTracks;
+                    // console.log("Exclusion des 2 derniers morceaux joués.");
                 }
-                // Sinon (si toutes les pistes disponibles sont récentes), utilise la liste complète du genre
             }
 
             const randomIndex = Math.floor(Math.random() * availableTracks.length);
+            // console.log(`Sélection aléatoire parmi ${availableTracks.length} pistes.`);
             return availableTracks[randomIndex];
         }
 
-        // Fonction pour charger un morceau dans l'iframe ET démarrer le minuteur
+        function updateGenreButtons() {
+            const buttons = genreButtonsContainer.querySelectorAll('.genre-button');
+            buttons.forEach(button => {
+                button.classList.toggle('active', button.textContent === currentGenre);
+            });
+        }
+
+
+        // --- Fonctions principales de lecture ---
+
         function loadTrack(track) {
-            if (!track || !track.id) {
-                console.error("Tentative de chargement d'une piste invalide:", track);
-                 document.getElementById('player-container').innerHTML = '<p class="loading-message">Erreur: Impossible de charger la piste.</p>';
-                return;
+            // Vérification cruciale au début
+            if (!track || typeof track !== 'object' || !track.id) {
+                console.error("ERREUR CRITIQUE: Tentative de chargement d'une piste invalide ou nulle.", track);
+                iframeTarget.innerHTML = '<p class="loading-message">Erreur: Impossible de charger cette piste.</p>';
+                 nowPlayingText.textContent = 'Erreur de chargement';
+                // Stopper le timer s'il y en avait un
+                if (nextTrackTimer) clearTimeout(nextTrackTimer);
+                nextTrackTimer = null;
+                return; // Arrêter ici !
             }
 
-            const playerContainer = document.getElementById('player-container');
-            currentTrackId = track.id;
-            console.log(`Chargement de la piste: ${track.title} (${track.id})`);
+            console.log(`[loadTrack] Tentative de chargement: ${track.title} (ID: ${track.id})`);
+            currentTrackId = track.id; // Mettre à jour l'ID courant
 
-            // --- MODIFICATION : Annuler le minuteur précédent ---
+            // Annuler le minuteur précédent s'il existe
             if (nextTrackTimer) {
                 clearTimeout(nextTrackTimer);
-                console.log("Minuteur précédent annulé.");
+                console.log("[loadTrack] Minuteur précédent annulé.");
                 nextTrackTimer = null;
             }
-            // --- FIN MODIFICATION ---
 
-            playerContainer.innerHTML = `
+            // Afficher la zone de l'iframe (elle pourrait être cachée si erreur précédente)
+            iframeTarget.style.display = 'block';
+            // Insérer l'iframe
+            iframeTarget.innerHTML = `
                 <iframe id="suno-iframe"
                         title="Lecteur Suno pour ${track.title || 'morceau'}"
                         src="https://suno.com/embed/${track.id}?autoplay=true"
-                        width="100%"
-                        height="240"
-                        style="border:none;"
-                        allow="autoplay">
-                    <p>Votre navigateur ne supporte pas les iframes.
-                       <a href="https://suno.com/song/${track.id}" target="_blank" rel="noopener noreferrer">
-                           Écouter ${track.title || 'ce morceau'} sur Suno
-                       </a>
-                    </p>
-                </iframe>
-            `;
+                        width="100%" height="240" style="border:none;"
+                        allow="autoplay"
+                        onerror="console.error('ERREUR: Iframe Suno n\\'a pas pu charger pour ID ${track.id}'); iframeTarget.innerHTML = '<p class=loading-message>Erreur chargement iframe</p>';">
+                    <p>Votre navigateur ne supporte pas les iframes.</p>
+                </iframe>`;
+             console.log("[loadTrack] Iframe injectée pour:", track.id);
 
-            updatePlayHistory(track.id); // Met à jour l'historique et le "Now Playing"
+            updatePlayHistory(track.id); // Mettre à jour l'historique et "En cours"
 
-            // --- MODIFICATION : Démarrer le minuteur pour le prochain morceau ---
-            if (track.duration && track.duration > 0) {
-                // Convertit la durée en millisecondes et ajoute une petite marge (ex: 3 secondes)
-                // pour s'assurer que le morceau est bien fini avant de passer au suivant.
-                const delay = (track.duration * 1000) + 3000;
-                console.log(`Prochain morceau programmé dans ${delay / 1000} secondes.`);
+            // Démarrer le minuteur pour le prochain morceau si durée valide
+            if (track.duration && typeof track.duration === 'number' && track.duration > 0) {
+                const delay = (track.duration * 1000) + 3000; // +3s de marge
+                console.log(`[loadTrack] Prochain morceau programmé via timer dans ${delay / 1000}s.`);
                 nextTrackTimer = setTimeout(() => {
-                    console.log("Minuteur écoulé, chargement du prochain morceau.");
+                    console.log("[Timer] Délai écoulé pour", currentTrackId, "-> Appel de loadNextTrack.");
                     loadNextTrack();
                 }, delay);
             } else {
-                // Si aucune durée n'est définie pour ce morceau, l'enchaînement automatique s'arrête ici.
-                console.warn(`Aucune durée définie pour le morceau ${track.id} (${track.title}). L'enchaînement automatique est désactivé pour ce morceau.`);
-                // Optionnel : Mettre un message à l'utilisateur ?
-                 // document.getElementById('now-playing-text').textContent += " (Fin de la lecture automatique)";
+                console.warn(`[loadTrack] Durée manquante ou invalide pour ${track.id} (${track.title}). Pas d'enchaînement auto après ce morceau. Durée trouvée:`, track.duration);
+                // L'enchaînement s'arrête ici naturellement.
             }
-            // --- FIN MODIFICATION ---
         }
 
-        // Fonction pour charger le morceau suivant (sélectionne et charge)
         function loadNextTrack() {
-            console.log("Appel de loadNextTrack...");
-             // Affiche un message pendant la sélection/chargement
-             const playerContainer = document.getElementById('player-container');
-             playerContainer.innerHTML = '<p class="loading-message">Chargement du morceau suivant...</p>';
-             document.getElementById('now-playing-text').textContent = 'Chargement...';
-
-             // Utilise un petit délai pour laisser le temps à l'UI de se mettre à jour
-             // et éviter les doubles appels trop rapides.
-             setTimeout(() => {
-                 const track = selectRandomTrack();
-                 if (track) {
-                    loadTrack(track);
-                 } else {
-                    playerContainer.innerHTML = '<p class="loading-message">Aucun morceau à jouer.</p>';
-                    console.error("Impossible de sélectionner un morceau suivant.");
-                 }
-             }, 100); // Délai court de 100ms
-        }
-
-        // Fonction pour mettre à jour l'état visuel des boutons de genre
-        function updateGenreButtons() {
-            const buttons = document.querySelectorAll('.genre-button');
-            buttons.forEach(button => {
-                if (button.textContent === currentGenre) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-        }
-
-        // --- ÉCOUTEURS D'ÉVÉNEMENTS ---
-
-        // Gestion des boutons de genre
-        document.querySelectorAll('.genre-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const selectedGenre = this.textContent;
-                if (selectedGenre !== currentGenre) {
-                    console.log(`Genre sélectionné: ${selectedGenre}`);
-                    currentGenre = selectedGenre;
-                    updateGenreButtons();
-                    loadNextTrack(); // Charge un nouveau morceau du genre sélectionné
-                }
-            });
-        });
-
-        // Gestion de l'affichage/masquage de l'historique
-        document.getElementById('toggle-history').addEventListener('click', function() {
-            const historyContainer = document.getElementById('history-container');
-            const isVisible = historyContainer.style.display === 'block';
-
-            historyContainer.style.display = isVisible ? 'none' : 'block';
-            this.textContent = isVisible ? "Voir l'historique" : "Cacher l'historique";
-
-            // Met à jour l'affichage de l'historique seulement quand on l'ouvre
-            if (!isVisible) {
-                updateHistoryDisplay();
+            // Sécurité: Ne rien faire si la radio n'a pas été démarrée explicitement
+            if (!radioHasStarted) {
+                 console.warn("[loadNextTrack] Bloqué - la radio n'a pas été démarrée par l'utilisateur.");
+                 return;
             }
-        });
 
-        // Gestion du bouton "Morceau suivant"
-        document.getElementById('next-track').addEventListener('click', () => {
-             console.log("Bouton 'Morceau suivant' cliqué.");
-             loadNextTrack(); // Charge manuellement le morceau suivant
-        });
+            console.log("[loadNextTrack] Début du processus de chargement du prochain morceau...");
+            iframeTarget.style.display = 'block'; // S'assurer que c'est visible
+            iframeTarget.innerHTML = '<p class="loading-message">Chargement du prochain morceau...</p>';
+            nowPlayingText.textContent = 'Sélection en cours...';
 
-        // --- CHARGEMENT INITIAL ---
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM chargé. Lancement du premier morceau.");
-            updateGenreButtons(); // Assure que le bouton "Tous les styles" est actif au début
-            updateHistoryDisplay(); // Affiche l'historique initial s'il existe
-            loadNextTrack(); // Charge le premier morceau au chargement de la page
+            // Utiliser un setTimeout pour découpler légèrement la sélection/chargement
+            setTimeout(() => {
+                console.log("[loadNextTrack] Sélection d'un morceau aléatoire...");
+                const trackToLoad = selectRandomTrack();
+
+                // Vérifier si selectRandomTrack a retourné quelque chose
+                if (trackToLoad) {
+                     console.log("[loadNextTrack] Morceau sélectionné:", trackToLoad.title, "-> Appel de loadTrack.");
+                    loadTrack(trackToLoad); // Charger le morceau trouvé
+                } else {
+                    // Cas où selectRandomTrack n'a rien retourné (devrait être rare si sunoTracks n'est pas vide)
+                    console.error("[loadNextTrack] ERREUR: selectRandomTrack n'a retourné aucun morceau ! Vérifiez la liste sunoTracks et la logique de filtrage.");
+                    iframeTarget.innerHTML = '<p class="loading-message">Erreur : Aucun morceau trouvé.</p>';
+                    nowPlayingText.textContent = 'Erreur de sélection';
+                     // Stopper le timer s'il y en avait un
+                     if (nextTrackTimer) clearTimeout(nextTrackTimer);
+                     nextTrackTimer = null;
+                }
+            }, 100); // Court délai
+        }
+
+        // --- Gestion du premier démarrage (lancé par clic) ---
+        function startRadioFirstTime() {
+             if (radioHasStarted) {
+                 console.log("[startRadioFirstTime] Déjà démarré, ne fait rien.");
+                 return; // Sécurité pour éviter double lancement
+             }
+             console.log("[startRadioFirstTime] Premier clic détecté ! Initialisation de la radio...");
+             radioHasStarted = true; // *** Marquer comme démarré ***
+
+             // Cacher l'overlay et montrer la zone iframe de manière fiable
+             if (initialOverlay) {
+                  initialOverlay.classList.add('hidden');
+                  // S'assurer qu'il disparaît visuellement même si la classe CSS a un délai
+                  initialOverlay.style.display = 'none';
+             }
+             if(iframeTarget) {
+                iframeTarget.style.display = 'block';
+             } else {
+                 console.error("ERREUR: Element #iframe-target non trouvé !");
+                 return;
+             }
+
+
+             console.log("[startRadioFirstTime] Appel de loadNextTrack pour charger le premier morceau...");
+             // Charger le premier morceau MAINTENANT
+             loadNextTrack();
+
+             // Optionnel : Désactiver les écouteurs du premier clic pour éviter re-déclenchement
+             if (initialOverlay) initialOverlay.removeEventListener('click', startRadioFirstTime);
+             // Inutile de retirer celui du bouton car il est DANS l'overlay
+        }
+
+
+        // --- Initialisation des écouteurs d'événements ---
+
+        function setupEventListeners() {
+            // Clic sur l'overlay pour démarrer
+            if (initialOverlay) {
+                initialOverlay.addEventListener('click', startRadioFirstTime);
+                console.log("[Init] Écouteur ajouté sur l'overlay de démarrage.");
+            } else {
+                 console.error("[Init] ERREUR: Overlay de démarrage #initial-play-overlay non trouvé !");
+            }
+
+            // Clics sur les boutons de genre
+            if (genreButtonsContainer) {
+                genreButtonsContainer.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('genre-button')) {
+                        const selectedGenre = event.target.textContent;
+                        console.log(`[Event] Bouton de genre cliqué: ${selectedGenre}`);
+
+                         // Si la radio n'a pas encore démarré, ce clic la démarre AUSSI !
+                        if (!radioHasStarted) {
+                             console.log("[Event] Clic sur genre démarre la radio...");
+                             startRadioFirstTime(); // Démarre la radio
+                             // Attendre un peu que le premier morceau ait une chance de commencer à charger
+                             // avant de forcer le changement de genre et recharger.
+                             setTimeout(() => {
+                                 if (selectedGenre !== currentGenre) { // Vérifier si c'est un nouveau genre
+                                      console.log(`[Event] Changement de genre vers: ${selectedGenre}`);
+                                     currentGenre = selectedGenre;
+                                     updateGenreButtons();
+                                     loadNextTrack(); // Charger un morceau du nouveau genre
+                                 }
+                             }, 300); // Délai un peu plus long
+                        } else {
+                            // Comportement normal si déjà démarré
+                            if (selectedGenre !== currentGenre) {
+                                console.log(`[Event] Changement de genre vers: ${selectedGenre}`);
+                                currentGenre = selectedGenre;
+                                updateGenreButtons();
+                                loadNextTrack(); // Charger un morceau du nouveau genre
+                            } else {
+                                console.log("[Event] Clic sur le genre déjà actif, ne fait rien.");
+                            }
+                        }
+                    }
+                });
+                 console.log("[Init] Écouteur ajouté sur le conteneur des boutons de genre.");
+            } else {
+                 console.error("[Init] ERREUR: Conteneur de boutons .genre-buttons non trouvé !");
+            }
+
+
+            // Clic sur bouton "Morceau suivant"
+            if (nextTrackButton) {
+                nextTrackButton.addEventListener('click', () => {
+                    console.log("[Event] Bouton 'Morceau Suivant' cliqué.");
+                     // Si la radio n'a pas encore démarré, ce clic la démarre !
+                     if (!radioHasStarted) {
+                          console.log("[Event] Clic sur 'Suivant' démarre la radio...");
+                         startRadioFirstTime();
+                     } else {
+                         // Comportement normal si déjà démarré
+                         loadNextTrack();
+                     }
+                });
+                 console.log("[Init] Écouteur ajouté sur le bouton 'Suivant'.");
+            } else {
+                 console.error("[Init] ERREUR: Bouton #next-track non trouvé !");
+            }
+
+
+            // Clic sur bouton "Voir/Cacher l'historique"
+            if (toggleHistoryButton && historyContainer) {
+                toggleHistoryButton.addEventListener('click', function() {
+                    const isVisible = historyContainer.style.display === 'block';
+                    historyContainer.style.display = isVisible ? 'none' : 'block';
+                    this.textContent = isVisible ? "Voir l'historique" : "Cacher l'historique";
+                    if (!isVisible) {
+                        // Mettre à jour l'affichage seulement quand on l'ouvre
+                        updateHistoryDisplay();
+                    }
+                });
+                console.log("[Init] Écouteur ajouté sur le bouton d'historique.");
+            } else {
+                 console.error("[Init] ERREUR: Bouton #toggle-history ou conteneur #history-container non trouvé !");
+            }
+
+        }
+
+        // --- CHARGEMENT INITIAL DE LA PAGE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("===============================");
+            console.log("DOM Chargé. Initialisation de la radio...");
+            console.log("===============================");
+
+            // Vérifier si la liste de pistes est vide
+             if (!sunoTracks || sunoTracks.length === 0) {
+                console.error("############################################################");
+                console.error("ERREUR FATALE: La liste 'sunoTracks' est vide ou non définie !");
+                console.error("Impossible de démarrer la radio. Vérifiez la configuration.");
+                console.error("############################################################");
+                if(initialOverlay) {
+                    initialOverlay.innerHTML = '<p class="loading-message" style="color: red;">Erreur: Liste de morceaux vide !</p>';
+                }
+                return; // Bloquer l'initialisation
+            }
+
+            updateGenreButtons();    // Met à jour l'affichage des boutons de genre
+            updateHistoryDisplay();  // Tente d'afficher l'historique (peut être vide)
+            setupEventListeners();   // Met en place tous les écouteurs de clics
+
+            console.log("[Init] Radio prête. Attente du clic utilisateur sur l'overlay pour démarrer.");
+            // IMPORTANT: Ne PAS appeler loadNextTrack() ici. La radio démarrera avec startRadioFirstTime().
         });
 
     </script>
