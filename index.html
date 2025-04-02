@@ -14,48 +14,19 @@
     </div>
 
     <header>
-        <img src="logo.jpg" alt="SOTOCA WebRadio Logo" class="logo">
+        <img src="logo.jpg" alt="SOTOCA WebRadio Logo">
     </header>
 
-    <div class="category-buttons" role="tablist">
-        <button class="category-button active" data-category="decollage-express" role="tab" aria-selected="true" aria-controls="decollage-express-panel">Décollage Express</button>
-        <button class="category-button" data-category="horizon-infini" role="tab" aria-selected="false" aria-controls="horizon-infini-panel">Horizon Infini</button>
-        <button class="category-button" data-category="calme-puissant" role="tab" aria-selected="false" aria-controls="calme-puissant-panel">Calme Puissant</button>
-        <button class="category-button" data-category="esprit-aiguise" role="tab" aria-selected="false" aria-controls="esprit-aiguise-panel">Esprit Aiguisé</button>
-        <button class="category-button" data-category="quete-sauvage" role="tab" aria-selected="false" aria-controls="quete-sauvage-panel">Quête Sauvage</button>
+    <div class="button-container">
+        <button id="button1">Décollage Express</button>
+        <button id="button2">Horizon Infini</button>
+        <button id="button3">Calme Puissant</button>
+        <button id="button4">Esprit Aiguisé</button>
+        <button id="button5">Quête Sauvage</button>
     </div>
 
-    <div class="iframe-container" id="player-container">
-        <div id="initial-play-overlay">
-            <span class="overlay-icon" aria-hidden="true">🎵</span>
-            <button id="start-radio-button" aria-label="Lancer la radio SOTOCA">Lancer la Radio</button>
-            <p class="overlay-text">(Cliquez pour démarrer)</p>
-        </div>
-        <div id="iframe-target"></div>
-        <div class="progress-bar" id="progress-bar"></div>
-        <button class="button-next" id="next-track">Morceau suivant</button>
-    </div>
-
-    <div class="now-playing" aria-live="polite">
-        <p id="now-playing-text"></p>
-    </div>
-
-    <div class="controls">
-        <!-- Vide maintenant, peut être supprimé si inutile -->
-    </div>
-
-    <div class="support-section">
-        <h2 class="support-title">SOUTENIR SOTOCA WEBRADIO</h2>
-        <p class="support-text">Cette radio est sans publicité et entièrement gratuite. Votre soutien nous permet de continuer à offrir une expérience musicale unique et sans interruption.</p>
-        <div class="support-buttons">
-            <a href="https://www.paypal.com/donate" target="_blank" class="support-button paypal-button">Faire un don via PayPal</a>
-            <a href="https://www.tipeee.com" target="_blank" class="support-button">Nous soutenir sur Tipeee</a>
-        </div>
-    </div>
-
-    <div class="attribution">
-        <p>Tous les morceaux sont fournis par <a href="https://suno.com" target="_blank">Suno</a> sous licence libre. Cette radio est un projet indépendant et n'est pas affiliée à Suno.</p>
-    </div>
+    <button id="play-button">Lancer la Radio</button>
+    <button id="next-button">Morceau suivant</button>
 
     <script src="script.js"></script>
 </body>
