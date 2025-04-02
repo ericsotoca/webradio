@@ -8,8 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #121212; color: #ffffff; padding: 20px; max-width: 800px; margin: 0 auto; }
         header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 1px solid #333; }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: #5c67f2; }
-        .radio-info { max-width: 600px; margin: 0 auto 30px auto; text-align: center; line-height: 1.6; color: #aaa; }
+        .logo { max-width: 300px; height: auto; display: block; margin: 0 auto; }
         .category-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .category-button { background-color: #333; color: white; border: none; border-radius: 20px; padding: 12px 25px; font-size: 1em; cursor: pointer; transition: all 0.3s ease; }
         .category-button:hover { background-color: #5c67f2; transform: translateY(-2px); }
@@ -24,14 +23,9 @@
         .iframe-container { width: 100%; margin-bottom: 20px; background-color: #222; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); min-height: 240px; position: relative; }
         #suno-iframe { display: block; border: none; width: 100%; height: 240px; transition: opacity 0.3s ease; }
         .controls { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-        .button-next, .button-pause, .button-history { display: inline-block; background-color: #5c67f2; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3); }
-        .button-next:hover, .button-pause:hover, .button-history:hover { background-color: #4a54cc; transform: translateY(-2px); box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4); }
-        .button-next:focus, .button-pause:focus, .button-history:focus { outline: 2px solid #5c67f2; outline-offset: 2px; }
-        .history-container { margin-top: 30px; padding: 15px; background-color: #222; border-radius: 8px; display: none; }
-        .history-container h3 { margin-bottom: 15px; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .history-list { list-style-type: none; padding-left: 0; }
-        .history-list li { padding: 8px 0; border-bottom: 1px solid #333; color: #aaa; }
-        .history-list li:last-child { border-bottom: none; }
+        .button-next { display: inline-block; background-color: #5c67f2; color: white; padding: 12px 24px; border: none; border-radius: 25px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3); }
+        .button-next:hover { background-color: #4a54cc; transform: translateY(-2px); box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4); }
+        .button-next:focus { outline: 2px solid #5c67f2; outline-offset: 2px; }
         .support-section { text-align: center; margin: 40px 0; padding: 20px; background-color: rgba(92, 103, 242, 0.1); border-radius: 8px; border: 1px solid rgba(92, 103, 242, 0.3); }
         .support-title { font-size: 1.5em; color: #5c67f2; margin-bottom: 15px; }
         .support-text { margin-bottom: 20px; line-height: 1.5; color: #aaa; }
@@ -53,7 +47,7 @@
         .progress-bar { height: 5px; background: #5c67f2; width: 0; transition: width linear; position: absolute; top: 0; left: 0; }
         @media (max-width: 600px) { 
             body { padding: 10px; } 
-            h1 { font-size: 1.8em; } 
+            .logo { max-width: 200px; }
             .controls { flex-direction: column; } 
             .category-buttons { gap: 10px; } 
             .category-button { padding: 10px 20px; font-size: 0.9em; } 
@@ -65,8 +59,7 @@
 </head>
 <body>
     <header>
-        <h1>SOTOCA WebRadio</h1>
-        <p class="radio-info">Une expérience musicale unique à chaque visite ....</p>
+        <img src="logo.png" alt="SOTOCA WebRadio Logo" class="logo">
     </header>
 
     <div class="category-buttons" role="tablist">
@@ -113,13 +106,6 @@
 
     <div class="controls">
         <button class="button-next" id="next-track">Morceau suivant</button>
-        <button class="button-pause" id="pause-track">Pause</button>
-        <button class="button-history" id="toggle-history">Voir l'historique</button>
-    </div>
-
-    <div class="history-container" id="history-container">
-        <h3>Historique de lecture</h3>
-        <ul class="history-list" id="history-list"></ul>
     </div>
 
     <div class="support-section">
@@ -158,7 +144,6 @@
         let currentTrackId = null;
         let nextTrackTimer = null;
         let radioHasStarted = false;
-        let isPaused = false;
         let isLoading = false;
         let startTime = null;
 
@@ -171,10 +156,6 @@
         const iframeTarget = document.getElementById('iframe-target');
         const nowPlayingText = document.getElementById('now-playing-text');
         const nextTrackButton = document.getElementById('next-track');
-        const pauseButton = document.getElementById('pause-track');
-        const toggleHistoryButton = document.getElementById('toggle-history');
-        const historyContainer = document.getElementById('history-container');
-        const historyList = document.getElementById('history-list');
         const progressBar = document.getElementById('progress-bar');
 
         // Fonctions Utilitaires
@@ -205,32 +186,11 @@
                     if (history.length > 15) history = history.slice(0, 15);
                     try {
                         localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
-                        updateHistoryDisplay();
                     } catch (e) {
                         console.error("Erreur sauvegarde historique:", e);
                     }
                 }
             }
-        }
-
-        function updateHistoryDisplay() {
-            if (historyContainer.style.display !== 'block') return;
-            const fragment = document.createDocumentFragment();
-            const history = getPlayHistory();
-            if (history.length === 0) {
-                const li = document.createElement('li');
-                li.textContent = "Aucun morceau dans l'historique.";
-                fragment.appendChild(li);
-            } else {
-                history.forEach(item => {
-                    const li = document.createElement('li');
-                    const time = new Date(item.timestamp).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-                    li.textContent = `${item.title} par ${item.artist} (${item.category}) - ${time}`;
-                    fragment.appendChild(li);
-                });
-            }
-            historyList.innerHTML = '';
-            historyList.appendChild(fragment);
         }
 
         function getTracksByCategoryAndSubcategory(category, subcategory) {
@@ -279,7 +239,6 @@
             if (track.duration) {
                 startTime = Date.now();
                 const interval = setInterval(() => {
-                    if (isPaused) return;
                     const elapsed = (Date.now() - startTime) / 1000;
                     progressBar.style.width = `${Math.min((elapsed / track.duration) * 100, 100)}%`;
                 }, 1000);
@@ -315,7 +274,7 @@
         }
 
         function loadNextTrack() {
-            if (!radioHasStarted || isPaused || isLoading) return;
+            if (!radioHasStarted || isLoading) return;
             isLoading = true;
             iframeTarget.innerHTML = '<p class="loading-message">Chargement du prochain morceau...</p>';
             nowPlayingText.textContent = 'Sélection en cours...';
@@ -368,31 +327,6 @@
                 if (!radioHasStarted) startRadioFirstTime();
                 else loadNextTrack();
             });
-
-            pauseButton.addEventListener('click', () => {
-                if (!radioHasStarted) return;
-                isPaused = !isPaused;
-                if (isPaused) {
-                    clearTimeout(nextTrackTimer);
-                    iframeTarget.style.opacity = '0.5';
-                } else {
-                    const track = sunoTracks.find(t => t.id === currentTrackId);
-                    if (track) {
-                        const elapsed = (Date.now() - startTime) / 1000;
-                        const remaining = Math.max(track.duration - elapsed, 0);
-                        nextTrackTimer = setTimeout(loadNextTrack, remaining * 1000 + 3000);
-                    }
-                    iframeTarget.style.opacity = '1';
-                }
-                pauseButton.textContent = isPaused ? 'Reprendre' : 'Pause';
-            });
-
-            toggleHistoryButton.addEventListener('click', function() {
-                const isVisible = historyContainer.style.display === 'block';
-                historyContainer.style.display = isVisible ? 'none' : 'block';
-                this.textContent = isVisible ? "Voir l'historique" : "Cacher l'historique";
-                if (!isVisible) updateHistoryDisplay();
-            });
         }
 
         // Initialisation
@@ -402,7 +336,6 @@
                 return;
             }
             updateCategoryButtons();
-            updateHistoryDisplay();
             setupEventListeners();
         });
     </script>
