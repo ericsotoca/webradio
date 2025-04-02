@@ -12,24 +12,24 @@ const sunoTracks = [
     { "id": "2160a428-d7c4-4892-b250-9a739a60e475", "title": "Fuja de quem não quer te perder mas não sabe te amar", "artist": "Roberto na Área", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 157 },
     { "id": "b4661e87-97c3-4b6e-87ca-f31f47ac40ef", "title": "Eu Não Ando Sumido", "artist": "Roberto na Área", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 168 },
     { "id": "533b9834-52a5-4100-8d05-9ef605a4e715", "title": "Blues in the light of dawn", "artist": "GROOVEBOT", "ambiance": "Mélancolique", "moment": "Matin", "intention": "Réflexion", "duration": 183 }
-	{ "id": "ee467d00-5813-4a74-9792-c9ae4a09d344", "title": "Cat", "artist": "Feline Music", "ambiance": "Calme", "moment": "Nuit", "intention": "Détente", "duration": "Inconnu" }
-	{ "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty", "ambiance": "Mélancolique", "moment": "Nuit", "intention": "Réflexion", "duration": 194 }
-	{ "id": "b27c29f6-8ab4-47eb-81fd-efb85c848ada", "title": "C-A-P-Y-B-A-R-A", "artist": "Suno AI", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "f275d9ac-5a62-4bbe-baf9-3fa10e0332f4", "title": "Ain't Got a Nickel Ain't Got a Dime", "artist": "soul_diego", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "7f774078-1672-4858-a37f-acad373c5a84", "title": "Ho-Ohhhh Baby", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Soir", "intention": "Détente", "duration": "Inconnu" }
-	{ "id": "19807561-1427-4c25-a229-a8c3063d0616", "title": "Egyptian Dance Party", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Nuit", "intention": "Voyage", "duration": "Inconnu" }
-	{ "id": "c15f0251-fbac-4a30-a3e1-002dbc78cb79", "title": "I only ate 3 cheeseburgers!", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Midi", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "wetcircuit", "ambiance": "Méditative", "moment": "Nuit", "intention": "Réflexion", "duration": 264 }
-	{ "id": "5b83f352-1956-4ca2-8534-2af03bf76863", "title": "MAYBE?!", "artist": "aroundonce", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "423d3dea-7a36-4621-a3b2-ff92edc066d4", "title": "Bossa Jazz A Cappella", "artist": "3Daizy🌼", "ambiance": "Calme", "moment": "Après-midi", "intention": "Détente", "duration": 140 }
-	{ "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 194 }
-	{ "id": "2cf0773a-cd83-4931-8e1e-7f4eb1a2610e", "title": "Where Do We Go From Here?", "artist": "sushileaf 🍣🍃", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": "Inconnu" }
-	{ "id": "b26f13fd-69d0-4b70-a575-2757d9dea505", "title": "ポートフォリオ", "artist": "realisticnocturne357", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "225b52b1-a2d4-4c73-acdf-a6bfb1b391cd", "title": "World Hello!!", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Midi", "intention": "Voyage", "duration": "Inconnu" }
-	{ "id": "96031c9b-930b-4aae-a433-d624a1686d2f", "title": "Give it to me (Suno) 🌳", "artist": "mrtree", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
-	{ "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "dialectic (accept it)", "artist": "yolkhead", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 239 }
-	{ "id": "093e95d7-1cb5-46b5-9342-39bc82621a7b", "title": "I LOVE MY SMALL LITTLE CAT", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Matin", "intention": "Détente", "duration": "Inconnu" }
-	{ "id": "290fc7e0-4796-4c05-a0c0-8c92e1e2827a", "title": "Suno Please Fix", "artist": "SirBitesAlot", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": "Inconnu" }
+    { "id": "ee467d00-5813-4a74-9792-c9ae4a09d344", "title": "Cat", "artist": "Feline Music", "ambiance": "Calme", "moment": "Nuit", "intention": "Détente", "duration": "Inconnu" }
+    { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty", "ambiance": "Mélancolique", "moment": "Nuit", "intention": "Réflexion", "duration": 194 }
+    { "id": "b27c29f6-8ab4-47eb-81fd-efb85c848ada", "title": "C-A-P-Y-B-A-R-A", "artist": "Suno AI", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "f275d9ac-5a62-4bbe-baf9-3fa10e0332f4", "title": "Ain't Got a Nickel Ain't Got a Dime", "artist": "soul_diego", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "7f774078-1672-4858-a37f-acad373c5a84", "title": "Ho-Ohhhh Baby", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Soir", "intention": "Détente", "duration": "Inconnu" }
+    { "id": "19807561-1427-4c25-a229-a8c3063d0616", "title": "Egyptian Dance Party", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Nuit", "intention": "Voyage", "duration": "Inconnu" }
+    { "id": "c15f0251-fbac-4a30-a3e1-002dbc78cb79", "title": "I only ate 3 cheeseburgers!", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Midi", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "wetcircuit", "ambiance": "Méditative", "moment": "Nuit", "intention": "Réflexion", "duration": 264 }
+    { "id": "5b83f352-1956-4ca2-8534-2af03bf76863", "title": "MAYBE?!", "artist": "aroundonce", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "423d3dea-7a36-4621-a3b2-ff92edc066d4", "title": "Bossa Jazz A Cappella", "artist": "3Daizy🌼", "ambiance": "Calme", "moment": "Après-midi", "intention": "Détente", "duration": 140 }
+    { "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 194 }
+    { "id": "2cf0773a-cd83-4931-8e1e-7f4eb1a2610e", "title": "Where Do We Go From Here?", "artist": "sushileaf 🍣🍃", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": "Inconnu" }
+    { "id": "b26f13fd-69d0-4b70-a575-2757d9dea505", "title": "ポートフォリオ", "artist": "realisticnocturne357", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "225b52b1-a2d4-4c73-acdf-a6bfb1b391cd", "title": "World Hello!!", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Midi", "intention": "Voyage", "duration": "Inconnu" }
+    { "id": "96031c9b-930b-4aae-a433-d624a1686d2f", "title": "Give it to me (Suno) 🌳", "artist": "mrtree", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": "Inconnu" }
+    { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "dialectic (accept it)", "artist": "yolkhead", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 239 }
+    { "id": "093e95d7-1cb5-46b5-9342-39bc82621a7b", "title": "I LOVE MY SMALL LITTLE CAT", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Matin", "intention": "Détente", "duration": "Inconnu" }
+    { "id": "290fc7e0-4796-4c05-a0c0-8c92e1e2827a", "title": "Suno Please Fix", "artist": "SirBitesAlot", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": "Inconnu" }
 ];
 
 // Variables globales
