@@ -18,11 +18,31 @@
     </header>
 
     <div class="category-buttons" role="tablist">
-        <button class="category-button active" data-category="decollage-express" role="tab" aria-selected="true" aria-controls="decollage-express-panel">Décollage Express</button>
-        <button class="category-button" data-category="horizon-infini" role="tab" aria-selected="false" aria-controls="horizon-infini-panel">Horizon Infini</button>
-        <button class="category-button" data-category="calme-puissant" role="tab" aria-selected="false" aria-controls="calme-puissant-panel">Calme Puissant</button>
-        <button class="category-button" data-category="esprit-aiguise" role="tab" aria-selected="false" aria-controls="esprit-aiguise-panel">Esprit Aiguisé</button>
-        <button class="category-button" data-category="quete-sauvage" role="tab" aria-selected="false" aria-controls="quete-sauvage-panel">Quête Sauvage</button>
+        <button class="category-button active" data-category="ambiance" role="tab" aria-selected="true" aria-controls="subcategory-ambiance">Ambiance</button>
+        <button class="category-button" data-category="moment" role="tab" aria-selected="false" aria-controls="subcategory-moment">Moment</button>
+        <button class="category-button" data-category="intention" role="tab" aria-selected="false" aria-controls="subcategory-intention">Intention</button>
+    </div>
+
+    <div class="subcategory-container" id="subcategory-ambiance" role="tabpanel" aria-labelledby="ambiance-tab">
+        <button class="subcategory-button active" data-subcategory="Calme">Calme</button>
+        <button class="subcategory-button" data-subcategory="Énergique">Énergique</button>
+        <button class="subcategory-button" data-subcategory="Mélancolique">Mélancolique</button>
+        <button class="subcategory-button" data-subcategory="Méditative">Méditative</button>
+        <button class="subcategory-button" data-subcategory="Joyeuse">Joyeuse</button>
+    </div>
+    <div class="subcategory-container" id="subcategory-moment" role="tabpanel" aria-labelledby="moment-tab">
+        <button class="subcategory-button active" data-subcategory="Matin">Matin</button>
+        <button class="subcategory-button" data-subcategory="Midi">Midi</button>
+        <button class="subcategory-button" data-subcategory="Après-midi">Après-midi</button>
+        <button class="subcategory-button" data-subcategory="Soir">Soir</button>
+        <button class="subcategory-button" data-subcategory="Nuit">Nuit</button>
+    </div>
+    <div class="subcategory-container" id="subcategory-intention" role="tabpanel" aria-labelledby="intention-tab">
+        <button class="subcategory-button active" data-subcategory="Détente">Détente</button>
+        <button class="subcategory-button" data-subcategory="Motivation">Motivation</button>
+        <button class="subcategory-button" data-subcategory="Méditation">Méditation</button>
+        <button class="subcategory-button" data-subcategory="Réflexion">Réflexion</button>
+        <button class="subcategory-button" data-subcategory="Voyage">Voyage</button>
     </div>
 
     <div class="iframe-container" id="player-container">
