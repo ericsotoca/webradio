@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suno Radio - Expérience Musicale Unique</title>
+    <title>SOTOCA WebRadio - Expérience Musicale Unique</title>
     <style>
         * {
             box-sizing: border-box;
@@ -41,17 +41,32 @@
             color: #aaa;
         }
 
-        .current-track {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .genre-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        .current-track h2 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            color: #ccc;
+        .genre-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .genre-button:hover {
+            background-color: #5c67f2;
+            transform: translateY(-2px);
+        }
+
+        .genre-button.active {
+            background-color: #5c67f2;
         }
 
         .loading-message {
@@ -138,6 +153,54 @@
             border-bottom: none;
         }
 
+        .support-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: rgba(92, 103, 242, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(92, 103, 242, 0.3);
+        }
+
+        .support-title {
+            font-size: 1.5em;
+            color: #5c67f2;
+            margin-bottom: 15px;
+        }
+
+        .support-text {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #aaa;
+        }
+
+        .support-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .support-button {
+            display: inline-block;
+            background-color: #f28c31;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .support-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(242, 140, 49, 0.4);
+        }
+
+        .paypal-button {
+            background-color: #0070ba;
+        }
+
         .attribution {
             margin-top: 40px;
             padding-top: 20px;
@@ -168,6 +231,15 @@
             .controls {
                 flex-direction: column;
             }
+
+            .genre-buttons {
+                gap: 8px;
+            }
+
+            .genre-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -177,9 +249,13 @@
         <p class="radio-info">Une expérience musicale unique à chaque visite avec les meilleurs morceaux libres de droits de Suno</p>
     </header>
 
-    <div class="current-track">
-        <h2>Morceau actuel :</h2>
-        <div id="track-info">Chargement de votre expérience personnalisée...</div>
+    <div class="genre-buttons">
+        <button class="genre-button active">Tous les styles</button>
+        <button class="genre-button">Pop</button>
+        <button class="genre-button">Rock</button>
+        <button class="genre-button">Jazz</button>
+        <button class="genre-button">Classique</button>
+        <button class="genre-button">Électronique</button>
     </div>
 
     <div class="iframe-container">
@@ -200,6 +276,15 @@
         </ul>
     </div>
 
+    <div class="support-section">
+        <h2 class="support-title">SOUTENIR SOTOCA WEBRADIO</h2>
+        <p class="support-text">Cette radio est sans publicité et entièrement gratuite. Votre soutien nous permet de continuer à offrir une expérience musicale unique et sans interruption.</p>
+        <div class="support-buttons">
+            <a href="https://www.paypal.com/donate" target="_blank" class="support-button paypal-button">Faire un don via PayPal</a>
+            <a href="https://www.tipeee.com" target="_blank" class="support-button">Nous soutenir sur Tipeee</a>
+        </div>
+    </div>
+
     <div class="attribution">
         <p>Tous les morceaux sont fournis par <a href="https://suno.com" target="_blank">Suno</a> sous licence libre. Cette radio est un projet indépendant et n'est pas affiliée à Suno.</p>
     </div>
@@ -210,19 +295,25 @@
             {
                 id: "1de89e34-240b-46e1-b3aa-fb8e9278bbef",
                 title: "Morceau Suno 1",
-                artist: "Artiste Suno"
+                artist: "Artiste Suno",
+                genre: "Pop"
             },
             {
                 id: "a78d0820-96a5-4da6-8d89-234f96f5d0db",
                 title: "Morceau Suno 2",
-                artist: "Artiste Suno"
+                artist: "Artiste Suno",
+                genre: "Jazz"
             },
             {
                 id: "948b8276-6714-460f-b526-033354e094ce",
                 title: "Cancer",
-                artist: "Joy'elle"
+                artist: "Joy'elle",
+                genre: "Pop"
             }
         ];
+
+        // État actuel du genre sélectionné
+        let currentGenre = "Tous les styles";
 
         // Fonction pour obtenir l'historique de lecture depuis le localStorage
         function getPlayHistory() {
@@ -241,6 +332,7 @@
                     id: trackId,
                     title: track.title,
                     artist: track.artist,
+                    genre: track.genre,
                     timestamp: new Date().toISOString()
                 });
                 
@@ -279,21 +371,35 @@
             }
         }
 
-        // Fonction pour sélectionner un morceau aléatoire
+        // Fonction pour filtrer les morceaux par genre
+        function getTracksByGenre(genre) {
+            if (genre === "Tous les styles") {
+                return [...sunoTracks];
+            } else {
+                return sunoTracks.filter(track => track.genre === genre);
+            }
+        }
+
+        // Fonction pour sélectionner un morceau aléatoire en tenant compte du genre
         function selectRandomTrack() {
             const history = getPlayHistory();
-            let availableTracks = [...sunoTracks];
+            let availableTracks = getTracksByGenre(currentGenre);
+            
+            // Si aucun morceau ne correspond au genre, revenir à tous les styles
+            if (availableTracks.length === 0) {
+                availableTracks = [...sunoTracks];
+                currentGenre = "Tous les styles";
+                updateGenreButtons();
+            }
             
             // Exclure les derniers morceaux joués (si possible) pour éviter les répétitions
-            if (history.length > 0 && sunoTracks.length > 2) {
+            if (history.length > 0 && availableTracks.length > 2) {
                 const recentTrackIds = history.slice(0, Math.min(2, history.length)).map(item => item.id);
-                availableTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
+                const filteredTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
                 
-                // Si tous les morceaux ont été joués récemment (cas rare avec peu de morceaux),
-                // exclure au moins le dernier morceau joué
-                if (availableTracks.length === 0) {
-                    const lastTrackId = history[0].id;
-                    availableTracks = sunoTracks.filter(track => track.id !== lastTrackId);
+                // Si des morceaux sont disponibles après filtrage, utiliser ceux-là
+                if (filteredTracks.length > 0) {
+                    availableTracks = filteredTracks;
                 }
             }
             
@@ -305,10 +411,6 @@
         // Fonction pour charger un morceau dans l'iframe
         function loadTrack(track) {
             const playerContainer = document.getElementById('player-container');
-            const trackInfo = document.getElementById('track-info');
-            
-            // Mettre à jour les informations du morceau
-            trackInfo.textContent = `${track.title} par ${track.artist}`;
             
             // Créer l'iframe
             playerContainer.innerHTML = `
@@ -329,6 +431,27 @@
             const track = selectRandomTrack();
             loadTrack(track);
         }
+
+        // Fonction pour mettre à jour les boutons de genre
+        function updateGenreButtons() {
+            const buttons = document.querySelectorAll('.genre-button');
+            buttons.forEach(button => {
+                if (button.textContent === currentGenre) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Gestion des boutons de genre
+        document.querySelectorAll('.genre-button').forEach(button => {
+            button.addEventListener('click', function() {
+                currentGenre = this.textContent;
+                updateGenreButtons();
+                loadNextTrack();
+            });
+        });
 
         // Gestion de l'affichage de l'historique
         document.getElementById('toggle-history').addEventListener('click', function() {
