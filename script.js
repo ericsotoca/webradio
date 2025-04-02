@@ -14,19 +14,19 @@ const sunoTracks = [
     { "id": "533b9834-52a5-4100-8d05-9ef605a4e715", "title": "Blues in the light of dawn", "artist": "GROOVEBOT", "categorie": "Horizon Infini", "duration": 183 },
     { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty", "categorie": "Horizon Infini", "duration": 194 },
     { "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "wetcircuit", "categorie": "Esprit Aiguisé", "duration": 264 },
-    { "id": "423d3dea-7a36-4621-a3b2-ff92edc066d4", "title": "Bossa Jazz A Cappella", "artist": "3Daizy🌼", "categorie": "Calme Puissant", "duration": 140 },
+    { "id": "423d3dea-7a36-4621-a3b2-ff92edc066d4", "title": "Bossa Jazz A Cappella", "artist": "3Daizy🌼.", "categorie": "Esprit Aiguisé", "duration": 140 },
     { "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "categorie": "Décollage Express", "duration": 194 },
     { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "dialectic (accept it)", "artist": "yolkhead", "categorie": "Calme Puissant", "duration": 239 },
     { "id": "c5ebced9-f509-4d49-97b2-ff89ef881a52", "title": "Bob Ross Love Letter", "artist": "Suno AI", "categorie": "Décollage Express", "duration": 180 },
     { "id": "5564a0a7-ed9d-4b63-967b-c5534f472bce", "title": "π", "artist": "Suno AI", "categorie": "Esprit Aiguisé", "duration": 180 },
     { "id": "674e86cb-0395-414a-a291-a4c11a9efc4d", "title": "50 decimal places of pi", "artist": "Suno AI", "categorie": "Esprit Aiguisé", "duration": 180 },
-    { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "claraco", "categorie": "Calme Puissant", "duration": 239 },
+    { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "Claraco.", "categorie": "Esprit Aiguisé", "duration": 239 },
     { "id": "2343eb4a-d3c6-40e7-bf40-91e76b72a25c", "title": "Escape from 9 to 5", "artist": "Adios", "categorie": "Quête Sauvage", "duration": 125 },
     { "id": "93288786-8d6a-4e6a-95fd-4e3ba1aca02c", "title": "Why didn't anyone like my song?", "artist": "Suno AI", "categorie": "Décollage Express", "duration": 180 },
     { "id": "063f3392-fe1b-4ce9-9ac8-660dd0315bfb", "title": "Mozart On The Bass- FI", "artist": "Suno AI", "categorie": "Quête Sauvage", "duration": 180 },
     { "id": "8b6a2d3c-909f-4bee-8193-1f206b0cc111", "title": "OH AI (extended Version)", "artist": "SpinningFeedback620", "categorie": "Horizon Infini", "duration": 180 },
     { "id": "1b28f52a-0311-48e1-a645-f06f6a6f3d66", "title": "Nikola Tesla", "artist": "crispity", "categorie": "Décollage Express", "duration": 214 },
-    { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats", "categorie": "Calme Puissant", "duration": 161 }
+    { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats", "categorie": "Décollage Express", "duration": 161 }
 ];
 
 // Variables globales
