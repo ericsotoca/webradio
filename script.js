@@ -23,6 +23,7 @@ const sunoTracks = [
     { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "Claraco.", "categorie": "Esprit Aiguisé", "duration": 239 },
     { "id": "2343eb4a-d3c6-40e7-bf40-91e76b72a25c", "title": "Escape from 9 to 5", "artist": "Adios.", "categorie": "Quête Sauvage", "duration": 126 },
     { "id": "1b28f52a-0311-48e1-a645-f06f6a6f3d66", "title": "Nikola Tesla", "artist": "crispity", "categorie": "Décollage Express", "duration": 214 },
+    { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca IA", "categorie": "Horizon Infini", "duration": 178 },
     { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats.", "categorie": "Décollage Express", "duration": 161 }
 ];
 
