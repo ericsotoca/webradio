@@ -1,10 +1,14 @@
 const CACHE_NAME = 'sotoca-radio-cache-v1';
+// Adapter le chemin de base pour GitHub Pages
+const BASE_PATH = '/'; // Changez ceci par '/votre-repo/' si nécessaire
+
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/script.js',
-    '/logo.jpg'
+    BASE_PATH,
+    BASE_PATH + 'index.html',
+    BASE_PATH + 'styles.css',
+    BASE_PATH + 'script.js',
+    BASE_PATH + 'logo.jpg',
+    BASE_PATH + 'manifest.json'
 ];
 
 self.addEventListener('install', event => {
@@ -19,7 +23,8 @@ self.addEventListener('fetch', event => {
         caches.match(event.request)
             .then(response => response || fetch(event.request))
             .catch(() => {
-                return caches.match('/index.html'); // Fallback hors ligne
+                // Fallback vers la page d'accueil en cas d'erreur
+                return caches.match(BASE_PATH + 'index.html');
             })
     );
 });
