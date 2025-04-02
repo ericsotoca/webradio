@@ -30,6 +30,26 @@ const sunoTracks = [
     { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "dialectic (accept it)", "artist": "yolkhead", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 239 }
     { "id": "093e95d7-1cb5-46b5-9342-39bc82621a7b", "title": "I LOVE MY SMALL LITTLE CAT", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Matin", "intention": "Détente", "duration": "Inconnu" }
     { "id": "290fc7e0-4796-4c05-a0c0-8c92e1e2827a", "title": "Suno Please Fix", "artist": "SirBitesAlot", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": "Inconnu" }
+    { "id": "c5ebced9-f509-4d49-97b2-ff89ef881a52", "title": "Bob Ross Love Letter", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Après-midi", "intention": "Détente", "duration": 180 }
+    { "id": "5564a0a7-ed9d-4b63-967b-c5534f472bce", "title": "π", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Nuit", "intention": "Motivation", "duration": 180 }
+    { "id": "674e86cb-0395-414a-a291-a4c11a9efc4d", "title": "50 decimal places of pi", "artist": "Suno AI", "ambiance": "Calme", "moment": "Soir", "intention": "Réflexion", "duration": 180 }
+    { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "claraco", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 180 }
+    { "id": "2343eb4a-d3c6-40e7-bf40-91e76b72a25c", "title": "Escape from 9 to 5", "artist": "Adios", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 125 }
+    { "id": "93288786-8d6a-4e6a-95fd-4e3ba1aca02c", "title": "Why didn't anyone like my song?", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 180 }
+    { "id": "063f3392-fe1b-4ce9-9ac8-660dd0315bfb", "title": "Mozart On The Bass- FI", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Nuit", "intention": "Voyage", "duration": 180 }
+    { "id": "f5a86119-2283-4e9a-86ae-9c96476f1450", "title": "醉打蔣門神", "artist": "stratosphericpolyrhythm855", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": 180 }
+    { "id": "8b6a2d3c-909f-4bee-8193-1f206b0cc111", "title": "OH AI (extended Version)", "artist": "SpinningFeedback620", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": 180 }
+    { "id": "1b28f52a-0311-48e1-a645-f06f6a6f3d66", "title": "Nikola Tesla", "artist": "crispity", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 214 }
+    { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 161 }
+    { "id": "14572e0f-a446-4625-90ff-3676a790a886", "title": "AI Took My Job", "artist": "Suno AI", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": 180 }
+    { "id": "eaba4d6e-f7ab-4bc4-a48b-6e2c8d859dbc", "title": "Second Law of Thermodynamics", "artist": "Stei Camel 🐪", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 202 }
+    { "id": "7c267dcb-520c-4198-a614-7b9ea066bc66", "title": "Wheygazer - Lazarus One", "artist": "KakerMix", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 180 }
+    { "id": "9cd7f8cc-d9e5-4d10-b1a0-3b5fad2418c5", "title": "Frenchmen walkin' down the street", "artist": "Suno AI", "ambiance": "Joyeuse", "moment": "Après-midi", "intention": "Voyage", "duration": 180 }
+    { "id": "9b3a0739-ebad-4a3b-97eb-40dabf4186b5", "title": "Freefall", "artist": "falcon22", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": 180 }
+    { "id": "dfb0953e-57dc-4e32-9bec-02d9cd0759b0", "title": "We Hot (Feat. Stezious)", "artist": "Gallis   ✓⃝", "ambiance": "Énergique", "moment": "Nuit", "intention": "Motivation", "duration": 250 }
+    { "id": "8c500ec4-c557-4756-80a2-ea3445c94f4b", "title": "How Could A Movie Die?", "artist": "sonoa", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": 164 }
+    { "id": "e14944bb-6c13-4633-8b47-5a0f395f7550", "title": "Inconnu", "artist": "Inconnu", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": 180 }
+    { "id": "295f7691-9fe1-40d0-bd6d-e7a047d32b64", "title": "Inconnu", "artist": "Inconnu", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": 180 }
 ];
 
 // Variables globales
