@@ -25,7 +25,6 @@ const sunoTracks = [
     { "id": "2343eb4a-d3c6-40e7-bf40-91e76b72a25c", "title": "Escape from 9 to 5", "artist": "Adios", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 125 }
     { "id": "93288786-8d6a-4e6a-95fd-4e3ba1aca02c", "title": "Why didn't anyone like my song?", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 180 }
     { "id": "063f3392-fe1b-4ce9-9ac8-660dd0315bfb", "title": "Mozart On The Bass- FI", "artist": "Suno AI", "ambiance": "Énergique", "moment": "Nuit", "intention": "Voyage", "duration": 180 }
-    { "id": "f5a86119-2283-4e9a-86ae-9c96476f1450", "title": "醉打蔣門神", "artist": "stratosphericpolyrhythm855", "ambiance": "Inconnu", "moment": "Inconnu", "intention": "Inconnu", "duration": 180 }
     { "id": "8b6a2d3c-909f-4bee-8193-1f206b0cc111", "title": "OH AI (extended Version)", "artist": "SpinningFeedback620", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": 180 }
     { "id": "1b28f52a-0311-48e1-a645-f06f6a6f3d66", "title": "Nikola Tesla", "artist": "crispity", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 214 }
     { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 161 }
