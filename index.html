@@ -7,8 +7,8 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #121212; color: #ffffff; padding: 20px; max-width: 800px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 1px solid #333; }
-        .logo { max-width: 300px; height: auto; display: block; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; padding: 20px 0; border-bottom: 1px solid #333; width: 100%; }
+        .logo { width: 100%;; height: auto; display: block; margin: 0 auto; }
         .category-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .category-button { background-color: #333; color: white; border: none; border-radius: 20px; padding: 12px 25px; font-size: 1em; cursor: pointer; transition: all 0.3s ease; }
         .category-button:hover { background-color: #5c67f2; transform: translateY(-2px); }
@@ -45,15 +45,18 @@
         .overlay-icon { font-size: 3em; color: #5c67f2; margin-bottom: 10px; }
         .overlay-text { font-size: 0.9em; color: #ccc; margin-top: 15px; }
         .progress-bar { height: 5px; background: #5c67f2; width: 0; transition: width linear; position: absolute; top: 0; left: 0; }
-        @media (max-width: 600px) { 
-            body { padding: 10px; } 
-            .logo { max-width: 200px; }
-            .controls { flex-direction: column; } 
-            .category-buttons { gap: 10px; } 
-            .category-button { padding: 10px 20px; font-size: 0.9em; } 
-            .subcategory-button { padding: 6px 14px; font-size: 0.8em; } 
-            #start-radio-button { padding: 12px 24px; font-size: 1em;} 
-            .overlay-icon { font-size: 2.5em;} 
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .logo {
+                width: 100%; /* Toute la largeur sur petits écrans aussi */
+                height: auto;
+            }
+            .controls { flex-direction: column; }
+            .category-buttons { gap: 10px; }
+            .category-button { padding: 10px 20px; font-size: 0.9em; }
+            .subcategory-button { padding: 6px 14px; font-size: 0.8em; }
+            #start-radio-button { padding: 12px 24px; font-size: 1em; }
+            .overlay-icon { font-size: 2.5em; }
         }
     </style>
 </head>
