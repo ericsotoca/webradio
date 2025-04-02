@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suno Radio - Expérience Musicale Unique</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #5c67f2;
+        }
+
+        .radio-info {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .current-track {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .current-track h2 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #ccc;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #888;
+        }
+
+        .iframe-container {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #suno-iframe {
+            display: block;
+            border: none;
+            width: 100%;
+            height: 240px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .button-next, .button-history {
+            display: inline-block;
+            background-color: #5c67f2;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3);
+        }
+
+        .button-next:hover, .button-history:hover {
+            background-color: #4a54cc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4);
+        }
+
+        .button-next:active, .button-history:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(92, 103, 242, 0.2);
+        }
+
+        .history-container {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .history-container h3 {
+            margin-bottom: 15px;
+            color: #ccc;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .history-list {
+            list-style-type: none;
+        }
+
+        .history-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            color: #aaa;
+        }
+
+        .history-list li:last-child {
+            border-bottom: none;
+        }
+
+        .attribution {
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .attribution a {
+            color: #5c67f2;
+            text-decoration: none;
+        }
+
+        .attribution a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SOTOCA WebRadio</h1>
+        <p class="radio-info">Une expérience musicale unique à chaque visite avec les meilleurs morceaux libres de droits de Suno</p>
+    </header>
+
+    <div class="current-track">
+        <h2>Morceau actuel :</h2>
+        <div id="track-info">Chargement de votre expérience personnalisée...</div>
+    </div>
+
+    <div class="iframe-container">
+        <div id="player-container">
+            <p class="loading-message">Chargement d'un morceau aléatoire...</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="button-next" id="next-track">Morceau suivant</button>
+        <button class="button-history" id="toggle-history">Voir l'historique</button>
+    </div>
+
+    <div class="history-container" id="history-container">
+        <h3>Historique de lecture</h3>
+        <ul class="history-list" id="history-list">
+            <!-- L'historique sera inséré ici par JavaScript -->
+        </ul>
+    </div>
+
+    <div class="attribution">
+        <p>Tous les morceaux sont fournis par <a href="https://suno.com" target="_blank">Suno</a> sous licence libre. Cette radio est un projet indépendant et n'est pas affiliée à Suno.</p>
+    </div>
+
+    <script>
+        // Liste des morceaux Suno (iframes)
+        const sunoTracks = [
+            {
+                id: "1de89e34-240b-46e1-b3aa-fb8e9278bbef",
+                title: "Morceau Suno 1",
+                artist: "Artiste Suno"
+            },
+            {
+                id: "a78d0820-96a5-4da6-8d89-234f96f5d0db",
+                title: "Morceau Suno 2",
+                artist: "Artiste Suno"
+            },
+            {
+                id: "948b8276-6714-460f-b526-033354e094ce",
+                title: "Cancer",
+                artist: "Joy'elle"
+            }
+        ];
+
+        // Fonction pour obtenir l'historique de lecture depuis le localStorage
+        function getPlayHistory() {
+            const history = localStorage.getItem('sunoRadioHistory');
+            return history ? JSON.parse(history) : [];
+        }
+
+        // Fonction pour mettre à jour l'historique de lecture
+        function updatePlayHistory(trackId) {
+            let history = getPlayHistory();
+            
+            // Ajouter le nouveau morceau à l'historique
+            const track = sunoTracks.find(track => track.id === trackId);
+            if (track) {
+                history.unshift({
+                    id: trackId,
+                    title: track.title,
+                    artist: track.artist,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Limiter l'historique à 10 morceaux maximum
+                if (history.length > 10) {
+                    history = history.slice(0, 10);
+                }
+                
+                // Sauvegarder l'historique mis à jour
+                localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
+                
+                // Mettre à jour l'affichage de l'historique
+                updateHistoryDisplay();
+            }
+        }
+
+        // Fonction pour mettre à jour l'affichage de l'historique
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('history-list');
+            const history = getPlayHistory();
+            
+            // Vider la liste actuelle
+            historyList.innerHTML = '';
+            
+            // Ajouter chaque morceau à la liste
+            if (history.length === 0) {
+                historyList.innerHTML = '<li>Aucun morceau dans l\'historique</li>';
+            } else {
+                history.forEach(item => {
+                    const listItem = document.createElement('li');
+                    const date = new Date(item.timestamp);
+                    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    listItem.textContent = `${item.title} par ${item.artist} - ${formattedTime}`;
+                    historyList.appendChild(listItem);
+                });
+            }
+        }
+
+        // Fonction pour sélectionner un morceau aléatoire
+        function selectRandomTrack() {
+            const history = getPlayHistory();
+            let availableTracks = [...sunoTracks];
+            
+            // Exclure les derniers morceaux joués (si possible) pour éviter les répétitions
+            if (history.length > 0 && sunoTracks.length > 2) {
+                const recentTrackIds = history.slice(0, Math.min(2, history.length)).map(item => item.id);
+                availableTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
+                
+                // Si tous les morceaux ont été joués récemment (cas rare avec peu de morceaux),
+                // exclure au moins le dernier morceau joué
+                if (availableTracks.length === 0) {
+                    const lastTrackId = history[0].id;
+                    availableTracks = sunoTracks.filter(track => track.id !== lastTrackId);
+                }
+            }
+            
+            // Sélectionner un morceau aléatoire parmi les disponibles
+            const randomIndex = Math.floor(Math.random() * availableTracks.length);
+            return availableTracks[randomIndex];
+        }
+
+        // Fonction pour charger un morceau dans l'iframe
+        function loadTrack(track) {
+            const playerContainer = document.getElementById('player-container');
+            const trackInfo = document.getElementById('track-info');
+            
+            // Mettre à jour les informations du morceau
+            trackInfo.textContent = `${track.title} par ${track.artist}`;
+            
+            // Créer l'iframe
+            playerContainer.innerHTML = `
+                <iframe id="suno-iframe" 
+                    src="https://suno.com/embed/${track.id}" 
+                    width="100%" 
+                    height="240">
+                    <a href="https://suno.com/song/${track.id}">Écouter sur Suno</a>
+                </iframe>
+            `;
+            
+            // Mettre à jour l'historique
+            updatePlayHistory(track.id);
+        }
+
+        // Fonction pour charger le morceau suivant
+        function loadNextTrack() {
+            const track = selectRandomTrack();
+            loadTrack(track);
+        }
+
+        // Gestion de l'affichage de l'historique
+        document.getElementById('toggle-history').addEventListener('click', function() {
+            const historyContainer = document.getElementById('history-container');
+            const isVisible = historyContainer.style.display === 'block';
+            
+            historyContainer.style.display = isVisible ? 'none' : 'block';
+            this.textContent = isVisible ? 'Voir l\'historique' : 'Cacher l\'historique';
+            
+            if (!isVisible) {
+                updateHistoryDisplay();
+            }
+        });
+
+        // Gestion du bouton "Morceau suivant"
+        document.getElementById('next-track').addEventListener('click', loadNextTrack);
+
+        // Chargement initial d'un morceau au chargement de la page
+        window.addEventListener('DOMContentLoaded', loadNextTrack);
+    </script>
+</body>
+</html>
