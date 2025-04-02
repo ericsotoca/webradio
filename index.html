@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOTOCA WebRadio - Expérience Musicale Unique</title>
     <style>
+        /* ... (votre CSS reste inchangé) ... */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -219,15 +220,22 @@
             text-decoration: underline;
         }
 
+        .now-playing {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
             }
-            
+
             h1 {
                 font-size: 1.8em;
             }
-            
+
             .controls {
                 flex-direction: column;
             }
@@ -246,7 +254,7 @@
 <body>
     <header>
         <h1>SOTOCA WebRadio</h1>
-        <p class="radio-info">Une expérience musicale unique à chaque visite avec les meilleurs morceaux libres de droits de Suno</p>
+        <p class="radio-info">Une expérience musicale unique à chaque visite ....</p>
     </header>
 
     <div class="genre-buttons">
@@ -262,6 +270,10 @@
         <div id="player-container">
             <p class="loading-message">Chargement d'un morceau aléatoire...</p>
         </div>
+    </div>
+
+    <div class="now-playing">
+        <p id="now-playing-text"></p>
     </div>
 
     <div class="controls">
@@ -290,30 +302,53 @@
     </div>
 
     <script>
+        // --- DÉBUT DES MODIFICATIONS ---
+
         // Liste des morceaux Suno (iframes)
+        // !!! IMPORTANT: Ajoutez la propriété 'duration' en secondes pour chaque morceau !!!
         const sunoTracks = [
             {
-                id: "1de89e34-240b-46e1-b3aa-fb8e9278bbef",
-                title: "Morceau Suno 1",
-                artist: "Artiste Suno",
-                genre: "Pop"
+                id: "b34a68c5-d549-435f-9132-7e1af773ad3d",
+                title: "Jazz Cool Evening", // Titres plus descriptifs si possible
+                artist: "Suno AI",
+                genre: "Jazz",
+                duration: 191 // Exemple : 3 minutes et 5 secondes
             },
             {
-                id: "a78d0820-96a5-4da6-8d89-234f96f5d0db",
-                title: "Morceau Suno 2",
-                artist: "Artiste Suno",
-                genre: "Jazz"
+                id: "dd8ca77f-20d8-46fa-9c41-97aad8d2c5f3",
+                title: "Smooth Night Ride",
+                artist: "Suno AI",
+                genre: "Jazz",
+                duration: 239 // Exemple : 3 minutes et 30 secondes
             },
+            {
+                id: "32cefad4-9525-4a91-8c13-c782bdd2ab76",
+                title: "Upbeat Morning Cafe",
+                artist: "Suno AI",
+                genre: "Jazz",
+                duration: 74 // Exemple : 3 minutes et 15 secondes
+            },
+            // Ajoutez ici d'autres morceaux avec leur ID, titre, artiste, genre ET duration
             {
                 id: "948b8276-6714-460f-b526-033354e094ce",
                 title: "Cancer",
                 artist: "Joy'elle",
-                genre: "Pop"
-            }
+                genre: "Pop",
+                duration: 170 // Exemple : 3 minutes
+            },
+            
         ];
 
         // État actuel du genre sélectionné
         let currentGenre = "Tous les styles";
+
+        // Variable pour stocker l'ID du morceau en cours
+        let currentTrackId = null;
+
+        // Variable pour stocker l'ID du minuteur pour le prochain morceau
+        let nextTrackTimer = null;
+
+        // --- FIN DES MODIFICATIONS INITIALES ---
 
         // Fonction pour obtenir l'historique de lecture depuis le localStorage
         function getPlayHistory() {
@@ -324,48 +359,50 @@
         // Fonction pour mettre à jour l'historique de lecture
         function updatePlayHistory(trackId) {
             let history = getPlayHistory();
-            
-            // Ajouter le nouveau morceau à l'historique
+
             const track = sunoTracks.find(track => track.id === trackId);
             if (track) {
-                history.unshift({
-                    id: trackId,
-                    title: track.title,
-                    artist: track.artist,
-                    genre: track.genre,
-                    timestamp: new Date().toISOString()
-                });
-                
-                // Limiter l'historique à 10 morceaux maximum
-                if (history.length > 10) {
-                    history = history.slice(0, 10);
+                // Empêche d'ajouter la même piste consécutivement à l'historique (si rechargement rapide)
+                if (history.length === 0 || history[0].id !== trackId) {
+                    history.unshift({
+                        id: trackId,
+                        title: track.title || `Morceau ${track.id.substring(0, 6)}`, // Titre par défaut
+                        artist: track.artist || "Artiste inconnu",
+                        genre: track.genre || "Inconnu",
+                        timestamp: new Date().toISOString()
+                    });
+
+                    if (history.length > 10) { // Limite l'historique aux 10 derniers
+                        history = history.slice(0, 10);
+                    }
+
+                    localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
+                    updateHistoryDisplay(); // Met à jour l'affichage immédiatement
                 }
-                
-                // Sauvegarder l'historique mis à jour
-                localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
-                
-                // Mettre à jour l'affichage de l'historique
-                updateHistoryDisplay();
+                 // Met à jour le texte "Now Playing" même si la piste est la même
+                document.getElementById('now-playing-text').textContent = `En cours: ${track.title || 'Titre inconnu'} par ${track.artist || 'Artiste inconnu'}`;
+            } else {
+                 document.getElementById('now-playing-text').textContent = 'Chargement...';
             }
         }
+
 
         // Fonction pour mettre à jour l'affichage de l'historique
         function updateHistoryDisplay() {
             const historyList = document.getElementById('history-list');
             const history = getPlayHistory();
-            
-            // Vider la liste actuelle
-            historyList.innerHTML = '';
-            
-            // Ajouter chaque morceau à la liste
+
+            historyList.innerHTML = ''; // Vide la liste actuelle
+
             if (history.length === 0) {
-                historyList.innerHTML = '<li>Aucun morceau dans l\'historique</li>';
+                historyList.innerHTML = '<li>Aucun morceau dans l\'historique pour le moment.</li>';
             } else {
                 history.forEach(item => {
                     const listItem = document.createElement('li');
                     const date = new Date(item.timestamp);
-                    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                    listItem.textContent = `${item.title} par ${item.artist} - ${formattedTime}`;
+                    // Formatage plus lisible de l'heure
+                    const formattedTime = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                    listItem.textContent = `${item.title} par ${item.artist} (${item.genre}) - Écouté à ${formattedTime}`;
                     historyList.appendChild(listItem);
                 });
             }
@@ -373,66 +410,127 @@
 
         // Fonction pour filtrer les morceaux par genre
         function getTracksByGenre(genre) {
-            if (genre === "Tous les styles") {
-                return [...sunoTracks];
+            if (genre === "Tous les styles" || !genre) {
+                return [...sunoTracks]; // Retourne une copie pour éviter de modifier l'original
             } else {
                 return sunoTracks.filter(track => track.genre === genre);
             }
         }
 
-        // Fonction pour sélectionner un morceau aléatoire en tenant compte du genre
+        // Fonction pour sélectionner un morceau aléatoire (évite les 2 derniers joués si possible)
         function selectRandomTrack() {
             const history = getPlayHistory();
             let availableTracks = getTracksByGenre(currentGenre);
-            
-            // Si aucun morceau ne correspond au genre, revenir à tous les styles
+
+            // Si aucun morceau pour le genre sélectionné, revient à "Tous les styles"
             if (availableTracks.length === 0) {
-                availableTracks = [...sunoTracks];
+                console.warn(`Aucun morceau trouvé pour le genre "${currentGenre}". Retour à "Tous les styles".`);
                 currentGenre = "Tous les styles";
-                updateGenreButtons();
+                updateGenreButtons(); // Met à jour visuellement les boutons
+                availableTracks = getTracksByGenre(currentGenre);
             }
-            
-            // Exclure les derniers morceaux joués (si possible) pour éviter les répétitions
+
+             // S'il n'y a plus de pistes du tout
+            if (availableTracks.length === 0) {
+                console.error("Aucun morceau disponible dans sunoTracks.");
+                return null; // Ne peut rien sélectionner
+            }
+
+            // Essaye d'éviter de répéter les 2 derniers morceaux joués
             if (history.length > 0 && availableTracks.length > 2) {
-                const recentTrackIds = history.slice(0, Math.min(2, history.length)).map(item => item.id);
+                 // Prend les IDs des 2 derniers morceaux uniques de l'historique
+                const recentTrackIds = [...new Set(history.slice(0, 2).map(item => item.id))];
                 const filteredTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
-                
-                // Si des morceaux sont disponibles après filtrage, utiliser ceux-là
+                // S'il reste des morceaux après filtrage, utilise cette liste filtrée
                 if (filteredTracks.length > 0) {
                     availableTracks = filteredTracks;
                 }
+                // Sinon (si toutes les pistes disponibles sont récentes), utilise la liste complète du genre
             }
-            
-            // Sélectionner un morceau aléatoire parmi les disponibles
+
             const randomIndex = Math.floor(Math.random() * availableTracks.length);
             return availableTracks[randomIndex];
         }
 
-        // Fonction pour charger un morceau dans l'iframe
+        // Fonction pour charger un morceau dans l'iframe ET démarrer le minuteur
         function loadTrack(track) {
+            if (!track || !track.id) {
+                console.error("Tentative de chargement d'une piste invalide:", track);
+                 document.getElementById('player-container').innerHTML = '<p class="loading-message">Erreur: Impossible de charger la piste.</p>';
+                return;
+            }
+
             const playerContainer = document.getElementById('player-container');
-            
-            // Créer l'iframe
+            currentTrackId = track.id;
+            console.log(`Chargement de la piste: ${track.title} (${track.id})`);
+
+            // --- MODIFICATION : Annuler le minuteur précédent ---
+            if (nextTrackTimer) {
+                clearTimeout(nextTrackTimer);
+                console.log("Minuteur précédent annulé.");
+                nextTrackTimer = null;
+            }
+            // --- FIN MODIFICATION ---
+
             playerContainer.innerHTML = `
-                <iframe id="suno-iframe" 
-                    src="https://suno.com/embed/${track.id}" 
-                    width="100%" 
-                    height="240">
-                    <a href="https://suno.com/song/${track.id}">Écouter sur Suno</a>
+                <iframe id="suno-iframe"
+                        title="Lecteur Suno pour ${track.title || 'morceau'}"
+                        src="https://suno.com/embed/${track.id}?autoplay=true"
+                        width="100%"
+                        height="240"
+                        style="border:none;"
+                        allow="autoplay">
+                    <p>Votre navigateur ne supporte pas les iframes.
+                       <a href="https://suno.com/song/${track.id}" target="_blank" rel="noopener noreferrer">
+                           Écouter ${track.title || 'ce morceau'} sur Suno
+                       </a>
+                    </p>
                 </iframe>
             `;
-            
-            // Mettre à jour l'historique
-            updatePlayHistory(track.id);
+
+            updatePlayHistory(track.id); // Met à jour l'historique et le "Now Playing"
+
+            // --- MODIFICATION : Démarrer le minuteur pour le prochain morceau ---
+            if (track.duration && track.duration > 0) {
+                // Convertit la durée en millisecondes et ajoute une petite marge (ex: 3 secondes)
+                // pour s'assurer que le morceau est bien fini avant de passer au suivant.
+                const delay = (track.duration * 1000) + 3000;
+                console.log(`Prochain morceau programmé dans ${delay / 1000} secondes.`);
+                nextTrackTimer = setTimeout(() => {
+                    console.log("Minuteur écoulé, chargement du prochain morceau.");
+                    loadNextTrack();
+                }, delay);
+            } else {
+                // Si aucune durée n'est définie pour ce morceau, l'enchaînement automatique s'arrête ici.
+                console.warn(`Aucune durée définie pour le morceau ${track.id} (${track.title}). L'enchaînement automatique est désactivé pour ce morceau.`);
+                // Optionnel : Mettre un message à l'utilisateur ?
+                 // document.getElementById('now-playing-text').textContent += " (Fin de la lecture automatique)";
+            }
+            // --- FIN MODIFICATION ---
         }
 
-        // Fonction pour charger le morceau suivant
+        // Fonction pour charger le morceau suivant (sélectionne et charge)
         function loadNextTrack() {
-            const track = selectRandomTrack();
-            loadTrack(track);
+            console.log("Appel de loadNextTrack...");
+             // Affiche un message pendant la sélection/chargement
+             const playerContainer = document.getElementById('player-container');
+             playerContainer.innerHTML = '<p class="loading-message">Chargement du morceau suivant...</p>';
+             document.getElementById('now-playing-text').textContent = 'Chargement...';
+
+             // Utilise un petit délai pour laisser le temps à l'UI de se mettre à jour
+             // et éviter les doubles appels trop rapides.
+             setTimeout(() => {
+                 const track = selectRandomTrack();
+                 if (track) {
+                    loadTrack(track);
+                 } else {
+                    playerContainer.innerHTML = '<p class="loading-message">Aucun morceau à jouer.</p>';
+                    console.error("Impossible de sélectionner un morceau suivant.");
+                 }
+             }, 100); // Délai court de 100ms
         }
 
-        // Fonction pour mettre à jour les boutons de genre
+        // Fonction pour mettre à jour l'état visuel des boutons de genre
         function updateGenreButtons() {
             const buttons = document.querySelectorAll('.genre-button');
             buttons.forEach(button => {
@@ -444,33 +542,49 @@
             });
         }
 
+        // --- ÉCOUTEURS D'ÉVÉNEMENTS ---
+
         // Gestion des boutons de genre
         document.querySelectorAll('.genre-button').forEach(button => {
             button.addEventListener('click', function() {
-                currentGenre = this.textContent;
-                updateGenreButtons();
-                loadNextTrack();
+                const selectedGenre = this.textContent;
+                if (selectedGenre !== currentGenre) {
+                    console.log(`Genre sélectionné: ${selectedGenre}`);
+                    currentGenre = selectedGenre;
+                    updateGenreButtons();
+                    loadNextTrack(); // Charge un nouveau morceau du genre sélectionné
+                }
             });
         });
 
-        // Gestion de l'affichage de l'historique
+        // Gestion de l'affichage/masquage de l'historique
         document.getElementById('toggle-history').addEventListener('click', function() {
             const historyContainer = document.getElementById('history-container');
             const isVisible = historyContainer.style.display === 'block';
-            
+
             historyContainer.style.display = isVisible ? 'none' : 'block';
-            this.textContent = isVisible ? 'Voir l\'historique' : 'Cacher l\'historique';
-            
+            this.textContent = isVisible ? "Voir l'historique" : "Cacher l'historique";
+
+            // Met à jour l'affichage de l'historique seulement quand on l'ouvre
             if (!isVisible) {
                 updateHistoryDisplay();
             }
         });
 
         // Gestion du bouton "Morceau suivant"
-        document.getElementById('next-track').addEventListener('click', loadNextTrack);
+        document.getElementById('next-track').addEventListener('click', () => {
+             console.log("Bouton 'Morceau suivant' cliqué.");
+             loadNextTrack(); // Charge manuellement le morceau suivant
+        });
 
-        // Chargement initial d'un morceau au chargement de la page
-        window.addEventListener('DOMContentLoaded', loadNextTrack);
+        // --- CHARGEMENT INITIAL ---
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM chargé. Lancement du premier morceau.");
+            updateGenreButtons(); // Assure que le bouton "Tous les styles" est actif au début
+            updateHistoryDisplay(); // Affiche l'historique initial s'il existe
+            loadNextTrack(); // Charge le premier morceau au chargement de la page
+        });
+
     </script>
 </body>
 </html>
