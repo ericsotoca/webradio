@@ -8,6 +8,16 @@ const sunoTracks = [
     { "id": "3a09ffcc-f677-42ad-9ec0-dd2e01b7adca", "title": "Aurora Dance (Instrumental)", "artist": "Xian - ExclusiveKnob421", "ambiance": "Méditative", "moment": "Nuit", "intention": "Méditation", "duration": 140 },
     { "id": "25a32452-1bfd-4791-b378-7584a0be64f5", "title": "Aerial Awakening", "artist": "Zneip", "ambiance": "Calme", "moment": "Matin", "intention": "Détente", "duration": 214 },
     { "id": "d4cd5909-e7cc-4751-a6e1-f7a28f44808a", "title": "Reflections in Solitude", "artist": "Henryhan", "ambiance": "Calme", "moment": "Soir", "intention": "Réflexion", "duration": 179 },
+    { "id": "1dba28fb-3dfa-41b6-b438-cc81b587d40c", "title": "Saudade", "artist": "GROOVEBOT", "ambiance": "Mélancolique", "moment": "Soir", "intention": "Réflexion", "duration": 239 },
+    { "id": "2160a428-d7c4-4892-b250-9a739a60e475", "title": "Fuja de quem não quer te perder mas não sabe te amar", "artist": "Roberto na Área", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 157 },
+    { "id": "b4661e87-97c3-4b6e-87ca-f31f47ac40ef", "title": "Eu Não Ando Sumido", "artist": "Roberto na Área", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 168 },
+    { "id": "533b9834-52a5-4100-8d05-9ef605a4e715", "title": "Blues in the light of dawn", "artist": "GROOVEBOT", "ambiance": "Mélancolique", "moment": "Matin", "intention": "Réflexion", "duration": 183 }
+    { "id": "ee467d00-5813-4a74-9792-c9ae4a09d344", "title": "Cat", "artist": "Feline Music", "ambiance": "Calme", "moment": "Nuit", "intention": "Détente", "duration": "Inconnu" }
+    { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty", "ambiance": "Mélancolique", "moment": "Nuit", "intention": "Réflexion", "duration": 194 }
+    { "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "wetcircuit", "ambiance": "Méditative", "moment": "Nuit", "intention": "Réflexion", "duration": 264 }
+    { "id": "423d3dea-7a36-4621-a3b2-ff92edc066d4", "title": "Bossa Jazz A Cappella", "artist": "3Daizy🌼", "ambiance": "Calme", "moment": "Après-midi", "intention": "Détente", "duration": 140 }
+    { "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "ambiance": "Énergique", "moment": "Midi", "intention": "Motivation", "duration": 194 }
+    { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "dialectic (accept it)", "artist": "yolkhead", "ambiance": "Calme", "moment": "Soir", "intention": "Détente", "duration": 239 }
 ];
 
 // Variables globales
