@@ -81,7 +81,27 @@ const sunoTracks = [
     { "id": "872b3f45-612c-4408-92c5-115dc9bb025e", "title": "Hip-Hop of The Rabbit", "artist": "Random505", "categorie": "Quête Sauvage", "duration": 223 },
     { "id": "2794e660-10a0-4761-856f-90289a189f80", "title": "Apple Pie", "artist": "Humans AI", "categorie": "Calme Puissant", "duration": 177 },
     { "id": "0e1a1313-f1d4-4848-9d74-19749ed14388", "title": "How 2 B Happy", "artist": "Chibiitaii", "categorie": "Esprit Aiguisé", "duration": 159 },
-    { "id": "94e30c67-2f64-4ffb-9ef4-4cc93b8dd52f", "title": "Fox", "artist": "felinemusic", "categorie": "Inconnu", "duration": "Inconnu" }
+    { "id": "94e30c67-2f64-4ffb-9ef4-4cc93b8dd52f", "title": "Fox", "artist": "felinemusic", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "695f1367-b817-4399-be9d-ad73af812a41", "title": "test test", "artist": "Sotoca", "categorie": "Esprit Aiguisé", "duration": 170 },
+    { "id": "ed4bc352-89f2-4f08-b21c-3fef7cb86245", "title": "\"Minute By Minute\" (By Minute By Minute)", "artist": "Brado with the face for radio", "categorie": "Décollage Express", "duration": 205 },
+    { "id": "176e197f-0656-4351-9516-1ebc05d4855f", "title": "Her First Heartbreak", "artist": "Brandon Luke", "categorie": "Calme Puissant", "duration": 183 },
+    { "id": "f799de52-18f3-4cb3-a98f-c48be7ed7bfa", "title": "Jacek placek", "artist": "ImmutableMotet989", "categorie": "Esprit Aiguisé", "duration": 155 },
+    { "id": "75b62359-9b3e-4ffe-839b-0eb7c11de71e", "title": "Let’s Take a Chance", "artist": "MyDreamSongs", "categorie": "Calme Puissant", "duration": 213 },
+    { "id": "917b4a0f-a658-4476-a00d-a8b1ba08f242", "title": "My Gal Done Got Crazy", "artist": "BrainBendersBanter", "categorie": "Quête Sauvage", "duration": 227 },
+    { "id": "1d2906a9-ee4a-44d9-a71e-164b53c1c496", "title": "vanilla Suno", "artist": "Brado with the face for radio", "categorie": "Horizon Infini", "duration": 231 },
+    { "id": "fd95f5af-5b7f-493b-918c-8c2cf7380db4", "title": "Inclusive Backdoor Man (Pilloe mix)", "artist": "CelticSemitone", "categorie": "Quête Sauvage", "duration": 186 },
+    { "id": "137ba8ff-3d61-4d79-acfe-7644999cdba8", "title": "Are You Not Entertained? (Swedish Channel Challenge)", "artist": "Rattvisa", "categorie": "Horizon Infini", "duration": 230 },
+    { "id": "31ed9181-2aff-4bbc-b816-3be66fd9d0ef", "title": "Farther Along", "artist": "frowns", "categorie": "Calme Puissant", "duration": 172 },
+    { "id": "11e0e768-b87b-4fae-b0b4-4e8dc6374e44", "title": "Where the Hell Am I?", "artist": "Vrthtbox", "categorie": "Esprit Aiguisé", "duration": 228 },
+    { "id": "88e30118-a1ad-4be6-b222-50b16de9ed4f", "title": "Mommy Milkers", "artist": "Slutzilla", "categorie": "Quête Sauvage", "duration": 145 },
+    { "id": "e4578998-75f0-485d-bfa2-b71d86cf69a8", "title": "Popcorn Dreams Vol : 2", "artist": "@perturbinginstrumentcables061", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "d52a94bf-c003-44ab-a0e6-f8c35d4a56c9", "title": "Muoio da Pirla ( Happy Shot Remix )", "artist": "TesteDiSerie", "categorie": "Décollage Express", "duration": 240 },
+    { "id": "379a2b6a-d9fb-44f2-b3c3-9f608e223d04", "title": "You Need to Learn to Drive", "artist": "The Hulkster", "categorie": "Esprit Aiguisé", "duration": 261 },
+    { "id": "d1f43dc8-fa65-4d43-acc1-05905cf21bd9", "title": "Duermo por ti", "artist": "Therapeutic Santiago Flores Arkansas", "categorie": "Calme Puissant", "duration": 294 },
+    { "id": "4f04d3fc-7320-4cc0-ae63-17f9424732c0", "title": "Pizza Place (mia's version)", "artist": "Miamusic", "categorie": "Décollage Express", "duration": 189 },
+    { "id": "d012de10-e877-43f1-92f4-9bd2e706f52d", "title": "🎶 Darlin’, Don’t You Go 🎶", "artist": "RetroDream", "categorie": "Calme Puissant", "duration": 206 },
+    { "id": "f1bce079-bd9e-4fd9-9e48-a4ff9faebf9a", "title": "spinaround", "artist": "Gumball", "categorie": "Quête Sauvage", "duration": 206 },
+    { "id": "a8a0b704-4a24-4602-97f0-cb15de69056a", "title": "Baywatch Theme (Sunshine Soulwave Reprise v4)", "artist": "ChristoParis", "categorie": "Horizon Infini", "duration": 129 }
 ];
 
 // Variables globales
