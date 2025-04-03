@@ -89,8 +89,7 @@ const sunoTracks = [
     { "id": "379a2b6a-d9fb-44f2-b3c3-9f608e223d04", "title": "You Need to Learn to Drive", "artist": "The Hulkster", "categorie": "Esprit Aiguisé", "duration": 261 },
     { "id": "4f04d3fc-7320-4cc0-ae63-17f9424732c0", "title": "Pizza Place (mia's version)", "artist": "Miamusic.", "categorie": "Décollage Express", "duration": 189 },
     { "id": "d012de10-e877-43f1-92f4-9bd2e706f52d", "title": "🎶 Darlin’, Don’t You Go 🎶", "artist": "RetroDream", "categorie": "Calme Puissant", "duration": 206 },
-    { "id": "f1bce079-bd9e-4fd9-9e48-a4ff9faebf9a", "title": "spinaround", "artist": "Gumball", "categorie": "Quête Sauvage", "duration": 206 },
-    { "id": "a8a0b704-4a24-4602-97f0-cb15de69056a", "title": "Baywatch Theme (Sunshine Soulwave Reprise v4)", "artist": "ChristoParis", "categorie": "Horizon Infini", "duration": 129 }
+    { "id": "f1bce079-bd9e-4fd9-9e48-a4ff9faebf9a", "title": "spinaround", "artist": "Gumball", "categorie": "Quête Sauvage", "duration": 206 }
 ];
 
 // Variables globales
