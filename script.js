@@ -42,7 +42,7 @@ const sunoTracks = [
     { "id": "1dba28fb-3dfa-41b6-b438-cc81b587d40c", "title": "Saudade", "artist": "GROOVEBOT.", "categorie": "Horizon Infini", "duration": 219 },
     { "id": "4517afcc-b18f-471b-8bc2-d48794c5fe0b", "title": "Schlau vs. Schön (🇩🇪)", "artist": "Schöbi Records", "categorie": "Esprit Aiguisé", "duration": 198 },
     { "id": "8cc87e22-af6f-46fb-9d8a-ed1623547c31", "title": "Serene Lake", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 223 },
-    { "id": "264fd734-1fc4-465f-bac8-32bd7e87a563", "title": "Soft Rain", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 158 },
+    { "id": "264fd734-1fc4-465f-bac8-32bd7e87a563", "title": "Soft Rain", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 200 },
     { "id": "f1bce079-bd9e-4fd9-9e48-a4ff9faebf9a", "title": "spinaround", "artist": "Gumball", "categorie": "Quête Sauvage", "duration": 206 },
     { "id": "b9d4abb4-1df8-40c5-952c-10e72f16df54", "title": "Sunrise Symphony", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 198 },
     { "id": "70d69e22-05ce-477e-942e-cde1cd4da747", "title": "Sunset in early November", "artist": "WryConductor408.", "categorie": "Horizon Infini", "duration": 240 },
