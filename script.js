@@ -50,7 +50,21 @@ const sunoTracks = [
     { "id": "67764712-b129-4f78-bab2-1c03e2014655", "title": "Rambling Railroad", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 133 },
     { "id": "ac9cbeac-ae76-4472-933d-626b29fa870e", "title": "Fusion Éternelle", "artist": "JeanMiK2", "categorie": "Esprit Aiguisé", "duration": 240 },
     { "id": "cfbd2cd5-ef3d-42b7-8c79-c09215cf4a46", "title": "Мегаполис ночью", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 240 },
-    { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 }
+    { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 },
+    { "id": "f8373d7f-c0a3-4a7d-81e0-9313e1309fa0", "title": "Banana Republic", "artist": "YouNoWhooIs", "categorie": "Quête Sauvage", "duration": 165 },
+    { "id": "62712471-2235-4e17-a540-38360eadcc0e", "title": "Supersonic Grind", "artist": "Quantity Over Quality", "categorie": "Décollage Express", "duration": 148 },
+    { "id": "ef28db08-6ab5-4f0b-9e8a-eab53dcf661f", "title": "Blah Blah", "artist": "Suno AI", "categorie": "Quête Sauvage", "duration": 264 },
+    { "id": "684fd5b5-9eed-46cc-b5eb-895604546652", "title": "MAXIMUM", "artist": "Suno AI", "categorie": "Quête Sauvage", "duration": 154 },
+    { "id": "4517afcc-b18f-471b-8bc2-d48794c5fe0b", "title": "Schlau vs. Schön (🇩🇪)", "artist": "Schöbi Records", "categorie": "Esprit Aiguisé", "duration": 198 },
+    { "id": "a3bc664e-8ac0-4072-b340-2e847b240081", "title": "Cese y Desista", "artist": "Tiborio", "categorie": "Quête Sauvage", "duration": 255 },
+    { "id": "d0def131-ec26-498a-9fd9-89952c2f060b", "title": "Tongue Twisters part two", "artist": "STEVE VAN GULICK-HILL", "categorie": "Esprit Aiguisé", "duration": 135 },
+    { "id": "0e09c799-1259-48a0-9810-c8b9b6dab30d", "title": "I Miss You Remix", "artist": "Eclonix", "categorie": "Horizon Infini", "duration": 238 },
+    { "id": "fb314389-0d8b-430e-ac89-ffa9c818a5ea", "title": "Couch Potato Royalty", "artist": "MixedUpBeatboxers695", "categorie": "Calme Puissant", "duration": 222 },
+    { "id": "c0161255-f4a8-4aeb-bf6c-19d149bd40fe", "title": "Welcome to IKEA! (Välkommen till IKEA!)", "artist": "Wabbajack", "categorie": "Décollage Express", "duration": 112 },
+    { "id": "feb7766c-f69d-43ce-a94d-2b9dfb277959", "title": "Shattered Mirrors", "artist": "AdrenalineFueledFaders", "categorie": "Horizon Infini", "duration": 237 },
+    { "id": "1f54ea49-dddd-47b3-a3d3-264f1579caa0", "title": "No apologies (Remastered)", "artist": "Ovi", "categorie": "Esprit Aiguisé", "duration": 151 },
+    { "id": "a18fb50a-1989-4a82-aa6c-67e0b9d985cb", "title": "In the Magic", "artist": "SunniHM", "categorie": "Calme Puissant", "duration": 132 },
+    { "id": "04e9aeeb-76bb-4584-b47d-9bdb31206380", "title": "EL RAP GRAMATICAL", "artist": "TurbulentPublisher1155", "categorie": "Esprit Aiguisé", "duration": 211 }
 ];
 
 // Variables globales
