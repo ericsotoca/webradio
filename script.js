@@ -34,7 +34,31 @@ const sunoTracks = [
     { "id": "67764712-b129-4f78-bab2-1c03e2014655", "title": "Rambling Railroad", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 133 },
     { "id": "ac9cbeac-ae76-4472-933d-626b29fa870e", "title": "Fusion Éternelle", "artist": "JeanMiK2", "categorie": "Esprit Aiguisé", "duration": 240 },
     { "id": "cfbd2cd5-ef3d-42b7-8c79-c09215cf4a46", "title": "Мегаполис ночью", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 240 },
-    { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 }
+    { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 },
+    { "id": "695f1367-b817-4399-be9d-ad73af812a41", "title": "test test", "artist": "Sotoca", "categorie": "Esprit Aiguisé", "duration": 170 },
+    { "id": "ed4bc352-89f2-4f08-b21c-3fef7ce86245", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "812c5928-d512-4fcb-85ba-c6ed02647bbb", "title": "Digital Love", "artist": "GROOVEBOT", "categorie": "Horizon Infini", "duration": 160 },
+    { "id": "997e0359-8457-4c24-9b6a-42ba76a7ee0d", "title": "Victory Unveiled", "artist": "GROOVEBOT", "categorie": "Décollage Express", "duration": 200 },
+    { "id": "a3e445c8-b7e6-4f11-9c5c-2e7281c8a68e", "title": "Ethereal Journey", "artist": "GROOVEBOT", "categorie": "Calme Puissant", "duration": 180 },
+    { "id": "187fd87d-614b-4fc8-bd98-9420e9939795", "title": "Thirst of Triumph", "artist": "GROOVEBOT", "categorie": "Quête Sauvage", "duration": 170 },
+    { "id": "0f9017bf-936d-4242-93cd-fe54f49c6c65", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "7bd6d4dc-4e7a-4dd4-af9a-f269eee9f0b2", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "53bcffeb-260a-4a21-919d-ecedc88a21d4", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "a397db51-e3b7-43ab-b641-5d301b0b98e5", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "bfa06855-f2b4-425a-bcda-73a29ddb78d9", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "72095b8a-e900-4d3b-85c8-b161812f61d1", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "fe2e6d06-1dd5-4458-8426-6cb742fce01c", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "6a1b0175-9461-40ac-836e-52e0f754556c", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "6361a4ee-4b2b-4753-b2c6-7cc3d4efd603", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "9361bd7f-0d2e-4989-b3d8-c8bf83c9adb8", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "bfdf9757-cd77-4f2e-9676-b41598292ccb", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "1b6cafb4-ccc0-496e-b686-ac202a53e132", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "fa5e40b4-4e2b-4031-8ef0-369ad1d98f09", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "20f5dedf-4ad7-45f1-8519-71207ede4ea1", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "942301b1-f679-4a92-8374-aa676840dc3f", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "4d8be4fa-04e2-4db7-8a0c-afba32006935", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "bfbfe02a-3bf3-4c04-b834-65ca9cc55a59", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 }
+
 ];
 
 // Variables globales
