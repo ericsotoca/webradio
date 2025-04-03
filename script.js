@@ -54,7 +54,6 @@ const sunoTracks = [
     { "id": "a200b759-03e4-47c2-b724-6683187e0b3f", "title": "The Whispering Pines", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 146 },
     { "id": "187fd87d-614b-4fc8-bd98-9420e9939795", "title": "Thirst of Triumph", "artist": "GROOVEBOT", "categorie": "Quête Sauvage", "duration": 170 },
     { "id": "d0def131-ec26-498a-9fd9-89952c2f060b", "title": "Tongue Twisters part two", "artist": "STEVE VAN GULICK-HILL", "categorie": "Esprit Aiguisé", "duration": 135 },
-    { "id": "876ab577-f36a-4131-854a-5d51487d76e6", "title": "Tranquil Forest", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 137 },
     { "id": "1d2906a9-ee4a-44d9-a71e-164b53c1c496", "title": "Vanilla Suno", "artist": "Brado with the face for radio.", "categorie": "Horizon Infini", "duration": 231 },
     { "id": "997e0359-8457-4c24-9b6a-42ba76a7ee0d", "title": "Victory Unveiled", "artist": "GROOVEBOT", "categorie": "Décollage Express", "duration": 200 },
     { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2.", "categorie": "Horizon Infini", "duration": 240 },
