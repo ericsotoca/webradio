@@ -68,8 +68,20 @@ const sunoTracks = [
     { "id": "e5a628f1-18bc-4042-922c-afe8b0b028ed", "title": "The Distant Shore", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 197 },
     { "id": "264fd734-1fc4-465f-bac8-32bd7e87a563", "title": "Soft Rain", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 158 },
     { "id": "a200b759-03e4-47c2-b724-6683187e0b3f", "title": "The Whispering Pines", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 146 },
-    { "id": "5f981a9d-8e2b-4213-9b1b-f6e478f12951", "title": "A New Beginning", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 205 }
-
+    { "id": "5f981a9d-8e2b-4213-9b1b-f6e478f12951", "title": "A New Beginning", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 205 },
+    { "id": "66494343-5a2c-4ead-9320-2e77932216fa", "title": "Neon Swing", "artist": "waseland", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "407a2098-ce34-4384-bfda-888acb693e4f", "title": "get on up out ya feelin one time", "artist": "Zack Brown", "categorie": "Quête Sauvage", "duration": 59 },
+    { "id": "8828bd14-461f-4751-9d4c-776da5d4e64e", "title": "阿米诺斯 阿米诺斯", "artist": "Annie0001", "categorie": "Décollage Express", "duration": 162 },
+    { "id": "937e5a85-4846-45b0-a665-cac8b95e6d32", "title": "Legacy of Rhythm", "artist": "Kyrylo Shmidt", "categorie": "Calme Puissant", "duration": 147 },
+    { "id": "80a0540a-f19a-4bcb-a9b6-f856c0f0ec37", "title": "Zumba Zumba", "artist": "wolftopia", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "d0c08d7c-7e72-40bf-90cc-3112da5f62a5", "title": "Fever dream", "artist": "GTZY", "categorie": "Horizon Infini", "duration": 198 },
+    { "id": "d3138581-b61e-4e3d-952b-b07db480f473", "title": "Neon Blades", "artist": "austerecrowd841", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "8e629fac-cc59-448f-876f-c4b72fa10ab4", "title": "me gusta el pan", "artist": "temardos", "categorie": "Inconnu", "duration": "Inconnu" },
+    { "id": "2dba663e-404b-40c6-9eca-1d4871f9a75b", "title": "AI Music Conspiracies ft. 3Daizy🌼", "artist": "Nanashi_Zero🀄️", "categorie": "Esprit Aiguisé", "duration": 165 },
+    { "id": "872b3f45-612c-4408-92c5-115dc9bb025e", "title": "Hip-Hop of The Rabbit", "artist": "Random505", "categorie": "Quête Sauvage", "duration": 223 },
+    { "id": "2794e660-10a0-4761-856f-90289a189f80", "title": "Apple Pie", "artist": "Humans AI", "categorie": "Calme Puissant", "duration": 177 },
+    { "id": "0e1a1313-f1d4-4848-9d74-19749ed14388", "title": "How 2 B Happy", "artist": "Chibiitaii", "categorie": "Esprit Aiguisé", "duration": 159 },
+    { "id": "94e30c67-2f64-4ffb-9ef4-4cc93b8dd52f", "title": "Fox", "artist": "felinemusic", "categorie": "Inconnu", "duration": "Inconnu" }
 ];
 
 // Variables globales
