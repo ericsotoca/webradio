@@ -10,7 +10,7 @@ const sunoTracks = [
     { "id": "16555cd3-3aab-4f6d-b02c-8c15ebf6a8f1", "title": "Cade la neve", "artist": "Jazz56", "categorie": "Calme Puissant", "duration": 240 },
     { "id": "d2002f05-15f7-4490-bc84-dfdb6f033b90", "title": "Caminhos da Vida", "artist": "Sueli.", "categorie": "Horizon Infini", "duration": 240 },
     { "id": "a3bc664e-8ac0-4072-b340-2e847b240081", "title": "Cese y Desista", "artist": "Tiborio.", "categorie": "Quête Sauvage", "duration": 265 },
-    { "id": "b50869d5-fd45-4219-987b-22d68621178e", "title": "Confucius' Cloud Session [Reggae]", "artist": "Vibe Music Ai Records.", "categorie": "Horizon Infini", "duration": 194 },
+    { "id": "b50869d5-fd45-4219-987b-22d68621178e", "title": "Love and Peace", "artist": "Vibe Music Ai Records.", "categorie": "Calme Puissant", "duration": 194 },
     { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "Claraco.", "categorie": "Esprit Aiguisé", "duration": 239 },
     { "id": "6f9a9ed2-0082-4536-8db9-6cfca9c621ef", "title": "Corner lights", "artist": "HiddenHand.", "categorie": "Décollage Express", "duration": 184 },
     { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty.", "categorie": "Décollage Express", "duration": 185 },
