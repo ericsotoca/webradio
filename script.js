@@ -1,5 +1,5 @@
 // Liste complète des pistes avec nouvelle catégorisation unique
-const sortedTracks = [
+const sunoTracks = [
     { "id": "5f981a9d-8e2b-4213-9b1b-f6e478f12951", "title": "A New Beginning", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 205 },
     { "id": "1be45c7f-efee-4288-bb46-24bc4ac633a6", "title": "A Walk in the Park", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 131 },
     { "id": "25a32452-1bfd-4791-b378-7584a0be64f5", "title": "Aerial Awakening", "artist": "Zneip", "categorie": "Calme Puissant", "duration": 214 },
@@ -44,7 +44,6 @@ const sortedTracks = [
     { "id": "66494343-5a2c-4ead-9320-2e77932216fa", "title": "Neon Swing", "artist": "waseland", "categorie": "Inconnu", "duration": "Inconnu" },
     { "id": "1f54ea49-dddd-47b3-a3d3-264f1579caa0", "title": "No apologies (Remastered)", "artist": "Ovi", "categorie": "Esprit Aiguisé", "duration": 151 },
     { "id": "9d601e01-1282-4a76-afb5-b710edc38f8f", "title": "Onde cristalline de sérénité", "artist": "JeanMiK2.", "categorie": "Calme Puissant", "duration": 144 },
-    { "id": "9d601e01-1282-4a76-afb5-b710edc38f8f", "title": "Onde cristalline de sérénité", "artist": "JeanMiK2", "categorie": "Calme Puissant", "duration": 143 },
     { "id": "aa0febaa-6c8b-444b-a34f-db5155272b2b", "title": "Peaceful Meadow", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 152 },
     { "id": "e4578998-75f0-485d-bfa2-b71d86cf69a8", "title": "Popcorn Dreams Vol : 2", "artist": "@perturbinginstrumentcables061", "categorie": "Inconnu", "duration": "Inconnu" },
     { "id": "67764712-b129-4f78-bab2-1c03e2014655", "title": "Rambling Railroad", "artist": "JeanMiK2.", "categorie": "Horizon Infini", "duration": 133 },
