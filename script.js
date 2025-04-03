@@ -26,7 +26,7 @@ const sunoTracks = [
     { "id": "fd95f5af-5b7f-493b-918c-8c2cf7380db4", "title": "Inclusive Backdoor Man (Pilloe mix)", "artist": "CelticSemitone.", "categorie": "Quête Sauvage", "duration": 190 },
     { "id": "3899e808-d76f-48d4-b850-3ab3c6da6a88", "title": "Island Breeze", "artist": "DrollFire383.", "categorie": "Calme Puissant", "duration": 240 },
     { "id": "e9e6a0fb-d175-4678-a1a0-b8ab100e3d37", "title": "Kangaroo Rock", "artist": "JeanMiK2.", "categorie": "Quête Sauvage", "duration": 165 },
-    { "id": "937e5a85-4846-45b0-a665-cac8b95e6d32", "title": "Legacy of Rhythm", "artist": "Kyrylo Shmidt", "categorie": "Calme Puissant", "duration": 147 },
+    { "id": "937e5a85-4846-45b0-a665-cac8b95e6d32", "title": "Legacy of Rhythm", "artist": "Kyrylo Shmidt", "categorie": "Quête Sauvage", "duration": 148 },
     { "id": "75b62359-9b3e-4ffe-839b-0eb7c11de71e", "title": "Let's Take a Chance", "artist": "MyDreamSongs.", "categorie": "Calme Puissant", "duration": 213 },
     { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca IA.", "categorie": "Horizon Infini", "duration": 178 },
     { "id": "88e30118-a1ad-4be6-b222-50b16de9ed4f", "title": "Mommy Milkers", "artist": "Slutzilla.", "categorie": "Quête Sauvage", "duration": 145 },
