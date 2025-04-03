@@ -24,7 +24,17 @@ const sunoTracks = [
     { "id": "2343eb4a-d3c6-40e7-bf40-91e76b72a25c", "title": "Escape from 9 to 5", "artist": "Adios.", "categorie": "Quête Sauvage", "duration": 126 },
     { "id": "1b28f52a-0311-48e1-a645-f06f6a6f3d66", "title": "Nikola Tesla", "artist": "crispity", "categorie": "Décollage Express", "duration": 214 },
     { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca IA", "categorie": "Horizon Infini", "duration": 178 },
-    { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats.", "categorie": "Décollage Express", "duration": 161 }
+    { "id": "530b3957-d316-45d1-8bbf-989b1aa32a60", "title": "Sway Sway Sway Sway Sway Sway", "artist": "Shonen Beats.", "categorie": "Décollage Express", "duration": 161 },
+    { "id": "695f1367-b817-4399-be9d-ad73af812a41", "title": "test test", "artist": "Sotoca", "categorie": "Esprit Aiguisé", "duration": 170 },
+    { "id": "ed4bc352-89f2-4f08-b21c-3fef7ce86245", "title": "Inconnu", "artist": "Suno AI", "categorie": "Inconnu", "duration": 150 },
+    { "id": "9d601e01-1282-4a76-afb5-b710edc38f8f", "title": "Onde cristalline de sérénité", "artist": "JeanMiK2", "categorie": "Calme Puissant", "duration": 143 },
+    { "id": "e9e6a0fb-d175-4678-a1a0-b8ab100e3d37", "title": "Kangaroo Rock", "artist": "JeanMiK2", "categorie": "Quête Sauvage", "duration": 165 },
+    { "id": "0d6a7a3e-6dbf-4337-8b79-11fe7ce4629c", "title": "test8 test8", "artist": "JeanMiK2", "categorie": "Calme Puissant", "duration": 240 },
+    { "id": "bbddf627-8e79-4eda-b986-e658e115e451", "title": "Запастись энергией", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 },
+    { "id": "67764712-b129-4f78-bab2-1c03e2014655", "title": "Rambling Railroad", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 133 },
+    { "id": "ac9cbeac-ae76-4472-933d-626b29fa870e", "title": "Fusion Éternelle", "artist": "JeanMiK2", "categorie": "Esprit Aiguisé", "duration": 240 },
+    { "id": "cfbd2cd5-ef3d-42b7-8c79-c09215cf4a46", "title": "Мегаполис ночью", "artist": "JeanMiK2", "categorie": "Horizon Infini", "duration": 240 },
+    { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2", "categorie": "Décollage Express", "duration": 240 }
 ];
 
 // Variables globales
