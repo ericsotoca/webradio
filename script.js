@@ -24,7 +24,7 @@ const sunoTracks = [
     { "id": "872b3f45-612c-4408-92c5-115dc9bb025e", "title": "Hip-Hop of The Rabbit", "artist": "Random505", "categorie": "Quête Sauvage", "duration": 223 },
     { "id": "0e1a1313-f1d4-4848-9d74-19749ed14388", "title": "How 2 B Happy", "artist": "Chibiitaii", "categorie": "Esprit Aiguisé", "duration": 159 },
     { "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "Wetcircuit.", "categorie": "Esprit Aiguisé", "duration": 265 },
-    { "id": "0e09c799-1259-48a0-9810-c8b9b6dab30d", "title": "I Miss You Remix", "artist": "Eclonix", "categorie": "Horizon Infini", "duration": 238 },
+    { "id": "0e09c799-1259-48a0-9810-c8b9b6dab30d", "title": "I Miss You Remix", "artist": "Eclonix.", "categorie": "Horizon Infini", "duration": 238 },
     { "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "categorie": "Décollage Express", "duration": 194 },
     { "id": "fd95f5af-5b7f-493b-918c-8c2cf7380db4", "title": "Inclusive Backdoor Man (Pilloe mix)", "artist": "CelticSemitone", "categorie": "Quête Sauvage", "duration": 186 },
     { "id": "a18fb50a-1989-4a82-aa6c-67e0b9d985cb", "title": "In the Magic", "artist": "SunniHM", "categorie": "Calme Puissant", "duration": 132 },
