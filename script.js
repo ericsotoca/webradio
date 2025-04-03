@@ -50,7 +50,26 @@ const sunoTracks = [
     { "id": "feb7766c-f69d-43ce-a94d-2b9dfb277959", "title": "Shattered Mirrors", "artist": "AdrenalineFueledFaders", "categorie": "Horizon Infini", "duration": 237 },
     { "id": "1f54ea49-dddd-47b3-a3d3-264f1579caa0", "title": "No apologies (Remastered)", "artist": "Ovi", "categorie": "Esprit Aiguisé", "duration": 151 },
     { "id": "a18fb50a-1989-4a82-aa6c-67e0b9d985cb", "title": "In the Magic", "artist": "SunniHM", "categorie": "Calme Puissant", "duration": 132 },
-    { "id": "04e9aeeb-76bb-4584-b47d-9bdb31206380", "title": "EL RAP GRAMATICAL", "artist": "TurbulentPublisher1155", "categorie": "Esprit Aiguisé", "duration": 211 }
+    { "id": "04e9aeeb-76bb-4584-b47d-9bdb31206380", "title": "EL RAP GRAMATICAL", "artist": "TurbulentPublisher1155", "categorie": "Esprit Aiguisé", "duration": 211 },
+    { "id": "cf95498e-1031-466d-95bc-b8e8c067d2f4", "title": "The Last Dance", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 219 },
+    { "id": "1be45c7f-efee-4288-bb46-24bc4ac633a6", "title": "A Walk in the Park", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 131 },
+    { "id": "edcf6f52-b255-4bb8-9efd-6f25e215aa4d", "title": "The Night We Met", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 192 },
+    { "id": "b9d4abb4-1df8-40c5-952c-10e72f16df54", "title": "Sunrise Symphony", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 198 },
+    { "id": "3013aab3-775a-424d-aa4c-039772113504", "title": "City Lights", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 187 },
+    { "id": "11b441f9-8cb4-4e57-9c17-2d755e4bed36", "title": "Moonlight Sonata", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 164 },
+    { "id": "7491c084-a47f-409c-be7a-976cd0ced1d4", "title": "The Stars Above", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 203 },
+    { "id": "c91c0033-0347-4a17-ba76-d4d6250b50c6", "title": "Whispers of the Wind", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 149 },
+    { "id": "754c51f6-790f-44dd-868c-c89a7d16e2f3", "title": "The Ocean's Call", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 191 },
+    { "id": "aa0febaa-6c8b-444b-a34f-db5155272b2b", "title": "Peaceful Meadow", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 152 },
+    { "id": "b6fcebe0-7eb9-4829-98c2-159602f24161", "title": "The Journey Begins", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 208 },
+    { "id": "876ab577-f36a-4131-854a-5d51487d76e6", "title": "Tranquil Forest", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 137 },
+    { "id": "37e0e1dc-82be-4e25-adba-5528974df604", "title": "The World Unfolds", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 201 },
+    { "id": "8cc87e22-af6f-46fb-9d8a-ed1623547c31", "title": "Serene Lake", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 143 },
+    { "id": "e5a628f1-18bc-4042-922c-afe8b0b028ed", "title": "The Distant Shore", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 197 },
+    { "id": "264fd734-1fc4-465f-bac8-32bd7e87a563", "title": "Soft Rain", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 158 },
+    { "id": "a200b759-03e4-47c2-b724-6683187e0b3f", "title": "The Whispering Pines", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 146 },
+    { "id": "5f981a9d-8e2b-4213-9b1b-f6e478f12951", "title": "A New Beginning", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 205 }
+
 ];
 
 // Variables globales
