@@ -69,6 +69,7 @@ const sunoTracks = [
     { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", "title": "Maylo", "artist": "Jenseits der Grenzen", "categorie": "Horizon Infini", "duration": 223 },
     { "id": "1892cdb4-3eca-41fe-b341-e4cdc3fca285", "title": "Jetzt waßt wi da oalles besser (Remastered)", "artist": "Jenseits der Grenzen", "categorie": "Quête Sauvage", "duration": 187 },
     { "id": "990e18ee-59a7-4e4a-88fe-5300347faa31", "title": "Сила Думки", "artist": "Tosik", "categorie": "Horizon Infini", "duration": 240 },
+    { "id": "948b8276-6714-460f-b526-033354e094ce", "title": "Cancer", "artist": "Joy'elle", "categorie": "Quête Sauvage", "duration": 157 },
     { "id": "e1917ac3-d715-457a-b17c-e21982141a53", "title": "🇷🇺Mellstroy Плаки плаки", "artist": "Wondarlove", "categorie": "Calme Puissant", "duration": 164 }
 ];
 
