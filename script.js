@@ -28,7 +28,7 @@ const sunoTracks = [
     { "id": "e9e6a0fb-d175-4678-a1a0-b8ab100e3d37", "title": "Kangaroo Rock", "artist": "JeanMiK2.", "categorie": "Quête Sauvage", "duration": 165 },
     { "id": "937e5a85-4846-45b0-a665-cac8b95e6d32", "title": "Legacy of Rhythm", "artist": "Kyrylo Shmidt", "categorie": "Quête Sauvage", "duration": 148 },
     { "id": "75b62359-9b3e-4ffe-839b-0eb7c11de71e", "title": "Let's Take a Chance", "artist": "MyDreamSongs.", "categorie": "Calme Puissant", "duration": 213 },
-    { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca IA.", "categorie": "Horizon Infini", "duration": 178 },
+    { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca IA.", "categorie": "Horizon Infini", "duration": 118 },
     { "id": "88e30118-a1ad-4be6-b222-50b16de9ed4f", "title": "Mommy Milkers", "artist": "Slutzilla.", "categorie": "Quête Sauvage", "duration": 145 },
     { "id": "917b4a0f-a658-4476-a00d-a8b1ba08f242", "title": "My Gal Done Got Crazy", "artist": "BrainBendersBanter.", "categorie": "Quête Sauvage", "duration": 227 },
     { "id": "1f54ea49-dddd-47b3-a3d3-264f1579caa0", "title": "No apologies (Remastered)", "artist": "Ovi", "categorie": "Esprit Aiguisé", "duration": 151 },
