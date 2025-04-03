@@ -77,7 +77,7 @@ const sunoTracks = [
 ];
 
 // Variables globales
-let currentCategory = "decollage"; // Catégorie par défaut
+let currentCategory = "horizon"; // Catégorie par défaut
 let currentTrackId = null;
 let nextTrackTimer = null;
 let radioHasStarted = false;
