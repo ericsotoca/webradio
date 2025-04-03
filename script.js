@@ -15,7 +15,6 @@ const sunoTracks = [
     { "id": "6f9a9ed2-0082-4536-8db9-6cfca9c621ef", "title": "Corner lights", "artist": "HiddenHand.", "categorie": "Décollage Express", "duration": 184 },
     { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty.", "categorie": "Décollage Express", "duration": 185 },
     { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "Dialectic (accept it)", "artist": "yolkhead", "categorie": "Calme Puissant", "duration": 239 },
-    { "id": "04e9aeeb-76bb-4584-b47d-9bdb31206380", "title": "EL RAP GRAMATICAL", "artist": "TurbulentPublisher1155", "categorie": "Esprit Aiguisé", "duration": 211 },
     { "id": "a3e445c8-b7e6-4f11-9c5c-2e7281c8a68e", "title": "Ethereal Journey", "artist": "GROOVEBOT.", "categorie": "Calme Puissant", "duration": 160 },
     { "id": "b4661e87-97c3-4b6e-87ca-f31f47ac40ef", "title": "Eu Não Ando Sumido", "artist": "Roberto na Área.", "categorie": "Calme Puissant", "duration": 168 },
     { "id": "31ed9181-2aff-4bbc-b816-3be66fd9d0ef", "title": "Farther Along", "artist": "frowns.", "categorie": "Calme Puissant", "duration": 172 },
