@@ -76,14 +76,14 @@ const sunoTracks = [
     { "id": "8645f6ae-89ac-42a8-85fe-f79955550eae", "title": "PODŁOŻE BUJANE", "artist": "ZoleMusicAI", "categorie": "Calme Puissant", "duration": 208 },
     { "id": "60035e3c-4024-4438-a0bf-85bea5b5fcd3", "title": "Well Well Well", "artist": "Vibe Music Ai Records", "categorie": "Calme Puissant", "duration": 163 }
 ];
-
 // Variables globales
-let currentCategory = "horizon"; // Catégorie par défaut
+let currentCategory = "horizon";
 let currentTrackId = null;
 let nextTrackTimer = null;
 let radioHasStarted = false;
 let isLoading = false;
 let startTime = null;
+let nextTrackPreload = null; // Nouvelle variable pour le préchargement
 
 // Éléments du DOM
 const preloader = document.getElementById('preloader');
@@ -95,6 +95,11 @@ const iframeTarget = document.getElementById('iframe-target');
 const nowPlayingText = document.getElementById('now-playing-text');
 const nextTrackButton = document.getElementById('next-track');
 const progressBar = document.getElementById('progress-bar');
+
+// Fonction de préchargement
+function preloadNextTrack() {
+    nextTrackPreload = selectRandomTrack();
+}
 
 // Fonctions Utilitaires
 function getPlayHistory() {
@@ -132,7 +137,6 @@ function updatePlayHistory(trackId) {
 }
 
 function getTracksByCategory(category) {
-    // Conversion des catégories vers les valeurs internes
     const categoryMap = {
         "horizon": "Horizon Infini",
         "calme": "Calme Puissant",
@@ -140,7 +144,6 @@ function getTracksByCategory(category) {
         "quete": "Quête Sauvage",
         "decollage": "Décollage Express"
     };
-    
     const selectedCategory = categoryMap[category];
     return sunoTracks.filter(track => track.categorie === selectedCategory);
 }
@@ -198,7 +201,7 @@ function loadTrack(track) {
     iframe.src = `https://suno.com/embed/${track.id}?autoplay=true`;
     iframe.title = `Lecteur Suno pour ${track.title}`;
     iframe.allow = 'autoplay';
-    iframe.loading = 'lazy'; // Lazy loading
+    iframe.loading = 'lazy';
     iframe.onerror = () => {
         iframeTarget.innerHTML = '<p class="loading-message">Erreur : Impossible de charger ce morceau. Passage au suivant...</p>';
         setTimeout(loadNextTrack, 2000);
@@ -207,6 +210,10 @@ function loadTrack(track) {
     iframeTarget.appendChild(iframe);
     updatePlayHistory(track.id);
     updateProgress(track);
+    
+    // Préchargement de la piste suivante
+    preloadNextTrack();
+    
     if (track.duration) {
         nextTrackTimer = setTimeout(loadNextTrack, track.duration * 1000 + 3000);
     }
@@ -217,10 +224,14 @@ function loadNextTrack() {
     isLoading = true;
     iframeTarget.innerHTML = '<p class="loading-message">Chargement du prochain morceau...</p>';
     nowPlayingText.textContent = 'Sélection en cours...';
+    
     setTimeout(() => {
-        const trackToLoad = selectRandomTrack();
-        if (trackToLoad) loadTrack(trackToLoad);
-        else {
+        const trackToLoad = nextTrackPreload || selectRandomTrack();
+        if (trackToLoad) {
+            loadTrack(trackToLoad);
+            // Préchargement de la prochaine piste
+            preloadNextTrack();
+        } else {
             iframeTarget.innerHTML = '<p class="loading-message">Erreur : Aucun morceau trouvé.</p>';
             nowPlayingText.textContent = 'Erreur de sélection';
         }
@@ -232,10 +243,12 @@ function startRadioFirstTime() {
     if (radioHasStarted) return;
     radioHasStarted = true;
     initialOverlay.classList.add('hidden');
+    // Préchargement de la première piste
+    preloadNextTrack();
     loadNextTrack();
 }
 
-// Écouteurs d'événements optimisés avec délégation
+// Écouteurs d'événements
 function setupEventListeners() {
     categoryButtonsContainer.addEventListener('click', (event) => {
         if (event.target.matches('.category-button')) {
@@ -252,7 +265,6 @@ function setupEventListeners() {
         else loadNextTrack();
     });
 
-    // Détection hors ligne
     window.addEventListener('offline', () => {
         iframeTarget.innerHTML = '<p class="loading-message">Connexion perdue. Mode hors ligne activé.</p>';
         nowPlayingText.textContent = 'Mode hors ligne';
@@ -271,12 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCategoryButtons();
     setupEventListeners();
 
-    // Cacher le préchargeur après chargement
     window.addEventListener('load', () => {
         preloader.classList.add('hidden');
     });
 
-    // Enregistrement du Service Worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
             .then(() => console.log('Service Worker enregistré'))
