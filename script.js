@@ -61,20 +61,25 @@ const sunoTracks = [
     { "id": "cfbd2cd5-ef3d-42b7-8c79-c09215cf4a46", "title": "Мегаполис ночью", "artist": "JeanMiK2.", "categorie": "Horizon Infini", "duration": 240 },
     { "id": "4d8aac83-9cf6-48ce-af71-0b818df806db", "title": "康德之桥", "artist": "ReservedTremolo210.", "categorie": "Horizon Infini", "duration": 229 },
     { "id": "d012de10-e877-43f1-92f4-9bd2e706f52d", "title": "🎶 Darlin', Don't You Go 🎶", "artist": "RetroDream.", "categorie": "Calme Puissant", "duration": 206 },
-    { "id": "812c5928-d512-4fcb-85ba-c6ed02647bbb", title: "Песня о песнях", artist: "GROOVEBOT", categorie: "Horizon Infini", duration: 180 },
-    { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", title: "Maylo", artist: "Jenseits der Grenzen", categorie: "Horizon Infini", duration: 223 },
-    { "id": "1892cdb4-3eca-41fe-b341-e4cdc3fca285", title: "Jetzt waßt wi da oalles besser (Remastered)", artist: "Jenseits der Grenzen", categorie: "Quête Sauvage", duration: 187 },
-    { "id": "990e18ee-59a7-4e4a-88fe-5300347faa31", title: "Сила Думки", artist: "Tosik", categorie: "Horizon Infini", duration: 240 },
-    { "id": "e1917ac3-d715-457a-b17c-e21982141a53", title: "🇷🇺Mellstroy Плаки плаки", artist: "Wondarlove", categorie: "Calme Puissant", duration: 164 }
-    { "id": "3899e808-d76f-48d4-b850-3ab3c6da6a88", title: "Island Breeze", artist: "DrollFire383", categorie: "Calme Puissant", duration: 240 },
-    { "id": "16555cd3-3aab-4f6d-b02c-8c15ebf6a8f1", title: "Cade la neve", artist: "Jazz56", categorie: "Calme Puissant", duration: 240 },
-    { "id": "620dddb4-4593-42e8-9400-8f629a6524b3", title: "Confucius' Cloud Session [Reggae]", artist: "Vibe Music Ai Records", categorie: "Horizon Infini", duration: 318 },
-    { "id": "b50869d5-fd45-4219-987b-22d68621178e", title: "Love and Peace (Remastered)", artist: "Kay Rock Beatz", categorie: "Horizon Infini", duration: 194 },
-    { "id": "d2002f05-15f7-4490-bc84-dfdb6f033b90", title: "\"Caminhos da Vida\"", artist: "Sueli", categorie: "Horizon Infini", duration: 240 },
-    { "id": "5d4edb40-0565-4142-9758-6b3a90f6a2fd", title: "Reggae Love Vibes", artist: "Suno AI", categorie: "Horizon Infini", duration: 180 },
-    { "id": "8645f6ae-89ac-42a8-85fe-f79955550eae", title: "PODŁOŻE BUJANE", artist: "ZoleMusicAI", categorie: "Calme Puissant", duration: 208 },
-    { "id": "60035e3c-4024-4438-a0bf-85bea5b5fcd3", title: "Well Well Well", artist: "Vibe Music Ai Records", categorie: "Calme Puissant", duration: 163 }
-
+    { "id": "812c5928-d512-4fcb-85ba-c6ed02647bbb", "title": "Песня о песнях", artist: "GROOVEBOT", categorie: "Horizon Infini", duration: 180 },
+    { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", "title": "Maylo", artist: "Jenseits der Grenzen", categorie: "Horizon Infini", duration: 223 },
+    { "id": "1892cdb4-3eca-41fe-b341-e4cdc3fca285", "title": "Jetzt waßt wi da oalles besser (Remastered)", artist: "Jenseits der Grenzen", categorie: "Quête Sauvage", duration: 187 },
+    { "id": "990e18ee-59a7-4e4a-88fe-5300347faa31", "title": "Сила Думки", artist: "Tosik", categorie: "Horizon Infini", duration: 240 },
+    { "id": "e1917ac3-d715-457a-b17c-e21982141a53", "title": "🇷🇺Mellstroy Плаки плаки", artist: "Wondarlove", categorie: "Calme Puissant", duration: 164 },
+    { "id": "ed4bc352-89f2-4f08-b21c-3fef7cb86245", "title": "\"Minute By Minute\" (By Minute By Minute)", "artist": "Brado with the face for radio", "categorie": "Esprit Aiguisé", "duration": 205 },
+    { "id": "812c5928-d512-4fcb-85ba-c6ed02647bbb", "title": "Песня о песнях", "artist": "GROOVEBOT", "categorie": "Horizon Infini", "duration": 180 },
+    { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", "title": "Maylo", "artist": "Jenseits der Grenzen", "categorie": "Horizon Infini", "duration": 223 },
+    { "id": "1892cdb4-3eca-41fe-b341-e4cdc3fca285", "title": "Jetzt waßt wi da oalles besser (Remastered)", "artist": "Jenseits der Grenzen", "categorie": "Quête Sauvage", "duration": 187 },
+    { "id": "990e18ee-59a7-4e4a-88fe-5300347faa31", "title": "Сила Думки", "artist": "Tosik", "categorie": "Horizon Infini", "duration": 240 },
+    { "id": "e1917ac3-d715-457a-b17c-e21982141a53", "title": "🇷🇺Mellstroy Плаки плаки", "artist": "Wondarlove", "categorie": "Calme Puissant", "duration": 164 },
+    { "id": "3899e808-d76f-48d4-b850-3ab3c6da6a88", "title": "Island Breeze", "artist": "DrollFire383", "categorie": "Calme Puissant", "duration": 240 },
+    { "id": "16555cd3-3aab-4f6d-b02c-8c15ebf6a8f1", "title": "Cade la neve", "artist": "Jazz56", "categorie": "Calme Puissant", "duration": 240 },
+    { "id": "620dddb4-4593-42e8-9400-8f629a6524b3", "title": "Confucius' Cloud Session [Reggae]", "artist": "Vibe Music Ai Records", "categorie": "Horizon Infini", "duration": 318 },
+    { "id": "b50869d5-fd45-4219-987b-22d68621178e", "title": "Love and Peace (Remastered)", "artist": "Kay Rock Beatz", "categorie": "Horizon Infini", "duration": 194 },
+    { "id": "d2002f05-15f7-4490-bc84-dfdb6f033b90", "title": "\"Caminhos da Vida\"", "artist": "Sueli", "categorie": "Horizon Infini", "duration": 240 },
+    { "id": "5d4edb40-0565-4142-9758-6b3a90f6a2fd", "title": "Reggae Love Vibes", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 180 },
+    { "id": "8645f6ae-89ac-42a8-85fe-f79955550eae", "title": "PODŁOŻE BUJANE", "artist": "ZoleMusicAI", "categorie": "Calme Puissant", "duration": 208 },
+    { "id": "60035e3c-4024-4438-a0bf-85bea5b5fcd3", "title": "Well Well Well", "artist": "Vibe Music Ai Records", "categorie": "Calme Puissant", "duration": 163 }
 ];
 
 // Variables globales
