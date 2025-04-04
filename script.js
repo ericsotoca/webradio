@@ -1,5 +1,7 @@
 // Liste complète des pistes avec nouvelle catégorisation unique
 const sunoTracks = [
+    { "id": "f6e2bb57-f2e6-4d8f-9885-4c139c1d4326", "title": "Ombres de Fréquences", "artist": "Sotoca AI.", "categorie": "Décollage Express", "duration": 240 },  
+    { "id": "987bfad8-fe62-4cb0-9502-4ef1adf67ffb", "title": "Ombres de Fréquences", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 240 },  
     { "id": "3cc18362-3842-405b-9368-3a651cc0f9d1", "title": "Slow Groove Horizon", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 240 },          
     { "id": "72fd52d4-bb7e-48aa-a5e3-0115540c5a62", "title": "Pulse Beneath the Waves", "artist": "Sotoca AI.", "categorie": "Calme Puissant", "duration": 240 },      
     { "id": "569c8380-bacf-4bd3-a35c-7d468c7b9602", "title": "Whispers of the Delta", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 70 },    
