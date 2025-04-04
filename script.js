@@ -1,5 +1,6 @@
 // Liste complète des pistes avec nouvelle catégorisation unique
 const sunoTracks = [
+    { "id": "295f7691-9fe1-40d0-bd6d-e7a047d32b64", "title": "After the rain", "artist": "sonoa", "categorie": "Esprit Aiguisé", "duration": 169 },
     { "id": "afd7cad2-6112-4670-9274-378468a1c59d", "title": "After the rain", "artist": "RareRecordLabels1439", "categorie": "Calme Puissant", "duration": 239 },  
     { "id": "3cc18362-3842-405b-9368-3a651cc0f9d1", "title": "Slow Groove Horizon", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 240 },          
     { "id": "72fd52d4-bb7e-48aa-a5e3-0115540c5a62", "title": "Pulse Beneath the Waves", "artist": "Sotoca AI.", "categorie": "Calme Puissant", "duration": 240 },      
