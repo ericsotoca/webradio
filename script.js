@@ -66,219 +66,171 @@ const sunoTracks = [
 ];
 
 // Variables globales
-let currentCategory = "horizon";
-let currentTrackId = null;
-let nextTrackTimer = null;
-let radioHasStarted = false;
-let isLoading = false;
-let startTime = null;
-let nextTrackPreload = null; // Nouvelle variable pour le préchargement
+let songIds = ["songId1", "songId2", "songId3"]; // Remplacer par vos IDs Suno réels
+let currentSongIndex = 0;
+let nextSongIndex = 1;
+let playerContainer = document.getElementById('playerContainer');
+let currentIframe = null;
+let nextIframe = null;
+let crossfadeTimer = null;
 
-// Éléments du DOM
-const preloader = document.getElementById('preloader');
-const categoryButtonsContainer = document.querySelector('.category-buttons');
-const playerContainer = document.getElementById('player-container');
-const initialOverlay = document.getElementById('initial-play-overlay');
-const startButton = document.getElementById('start-radio-button');
-const iframeTarget = document.getElementById('iframe-target');
-const nowPlayingText = document.getElementById('now-playing-text');
-const nextTrackButton = document.getElementById('next-track');
-const progressBar = document.getElementById('progress-bar');
+// Durées estimées en secondes pour chaque chanson (à remplir manuellement)
+let songDurations = {
+    "songId1": 180, // 3 minutes
+    "songId2": 210, // 3:30 minutes
+    "songId3": 195  // 3:15 minutes
+};
 
-// Fonction de préchargement
-function preloadNextTrack() {
-    nextTrackPreload = selectRandomTrack();
-}
+// Configuration du crossfade
+let crossfadeDuration = 5; // Durée du crossfade en secondes
 
-// Fonctions Utilitaires
-function getPlayHistory() {
-    try {
-        const history = localStorage.getItem('sunoRadioHistory');
-        return history ? JSON.parse(history) : [];
-    } catch (e) {
-        console.error("Erreur lecture historique:", e);
-        return [];
-    }
-}
-
-function updatePlayHistory(trackId) {
-    if (!trackId) return;
-    let history = getPlayHistory();
-    const track = sunoTracks.find(t => t.id === trackId);
-    if (track) {
-        nowPlayingText.textContent = `En cours: ${track.title} par ${track.artist}`;
-        if (history.length === 0 || history[0].id !== trackId) {
-            history.unshift({
-                id: trackId,
-                title: track.title,
-                artist: track.artist,
-                category: track.categorie,
-                timestamp: new Date().toISOString()
-            });
-            if (history.length > 15) history = history.slice(0, 15);
-            try {
-                localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
-            } catch (e) {
-                console.error("Erreur sauvegarde historique:", e);
-            }
-        }
-    }
-}
-
-function getTracksByCategory(category) {
-    const categoryMap = {
-        "horizon": "Horizon Infini",
-        "calme": "Calme Puissant",
-        "esprit": "Esprit Aiguisé",
-        "quete": "Quête Sauvage",
-        "decollage": "Décollage Express"
-    };
-    const selectedCategory = categoryMap[category];
-    return sunoTracks.filter(track => track.categorie === selectedCategory);
-}
-
-function selectRandomTrack() {
-    const history = getPlayHistory();
-    let availableTracks = getTracksByCategory(currentCategory);
-    
-    if (availableTracks.length === 0) {
-        console.warn(`Aucun morceau pour la catégorie: ${currentCategory}.`);
-        return sunoTracks[Math.floor(Math.random() * sunoTracks.length)];
-    }
-    
-    if (history.length > 0 && availableTracks.length > 2) {
-        const recentTrackIds = [...new Set(history.slice(0, 2).map(item => item.id))];
-        const filteredTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
-        if (filteredTracks.length > 0) availableTracks = filteredTracks;
-    }
-    
-    return availableTracks[Math.floor(Math.random() * availableTracks.length)];
-}
-
-function updateCategoryButtons() {
-    const buttons = categoryButtonsContainer.querySelectorAll('.category-button');
-    buttons.forEach(button => {
-        button.classList.toggle('active', button.dataset.category === currentCategory);
-        button.setAttribute('aria-selected', button.dataset.category === currentCategory);
-    });
-}
-
-function updateProgress(track) {
-    progressBar.style.width = '0%';
-    if (track.duration) {
-        startTime = Date.now();
-        const interval = setInterval(() => {
-            const elapsed = (Date.now() - startTime) / 1000;
-            progressBar.style.width = `${Math.min((elapsed / track.duration) * 100, 100)}%`;
-        }, 1000);
-        setTimeout(() => clearInterval(interval), track.duration * 1000);
-    }
-}
-
-// Chargement de la piste
-function loadTrack(track) {
-    if (!track || !track.id) {
-        iframeTarget.innerHTML = '<p class="loading-message">Erreur : Piste invalide.</p>';
-        nowPlayingText.textContent = 'Erreur de chargement';
-        return;
-    }
-
-    currentTrackId = track.id;
-    if (nextTrackTimer) clearTimeout(nextTrackTimer);
+// Fonction pour créer un iframe
+function createIframe(songId, visible = true) {
     const iframe = document.createElement('iframe');
-    iframe.id = 'suno-iframe';
-    iframe.src = `https://suno.com/embed/${track.id}?autoplay=true`;
-    iframe.title = `Lecteur Suno pour ${track.title}`;
-    iframe.allow = 'autoplay';
-    iframe.loading = 'lazy';
-    iframe.onerror = () => {
-        iframeTarget.innerHTML = '<p class="loading-message">Erreur : Impossible de charger ce morceau. Passage au suivant...</p>';
-        setTimeout(loadNextTrack, 2000);
-    };
-    iframeTarget.innerHTML = '';
-    iframeTarget.appendChild(iframe);
-    updatePlayHistory(track.id);
-    updateProgress(track);
+    iframe.src = `https://suno.com/embed/${songId}`;
+    iframe.frameBorder = "0";
+    iframe.allow = "autoplay";
+    iframe.style.width = "100%";
+    iframe.style.height = "300px";
     
-    // Préchargement de la piste suivante
-    preloadNextTrack();
+    // Style pour le crossfade
+    iframe.style.transition = `opacity ${crossfadeDuration}s ease-in-out`;
+    iframe.style.opacity = visible ? "1" : "0";
     
-    if (track.duration) {
-        nextTrackTimer = setTimeout(loadNextTrack, track.duration * 1000 + 3000);
-    }
+    // Positionnement
+    iframe.style.position = "absolute";
+    iframe.style.top = "0";
+    iframe.style.left = "0";
+    
+    return iframe;
 }
 
-function loadNextTrack() {
-    if (!radioHasStarted || isLoading) return;
-    isLoading = true;
-    iframeTarget.innerHTML = '<p class="loading-message">Chargement du prochain morceau...</p>';
-    nowPlayingText.textContent = 'Sélection en cours...';
+// Préparation du conteneur pour les iframes superposés
+function preparePlayerContainer() {
+    playerContainer.style.position = "relative";
+    playerContainer.style.width = "100%";
+    playerContainer.style.height = "300px";
+}
+
+// Fonction pour démarrer la lecture
+function startPlayback() {
+    preparePlayerContainer();
     
+    // Créer et ajouter l'iframe pour la chanson actuelle
+    currentIframe = createIframe(songIds[currentSongIndex], true);
+    playerContainer.appendChild(currentIframe);
+    
+    // Configurer le timer pour le crossfade
+    const currentSongDuration = songDurations[songIds[currentSongIndex]];
+    const crossfadeStartTime = currentSongDuration - crossfadeDuration;
+    
+    console.log(`La chanson actuelle durera environ ${currentSongDuration} secondes`);
+    console.log(`Le crossfade commencera dans ${crossfadeStartTime} secondes`);
+    
+    // Démarrer le timer pour le crossfade
+    crossfadeTimer = setTimeout(() => {
+        console.log("Préparation du crossfade...");
+        // Créer et ajouter l'iframe pour la chanson suivante
+        nextSongIndex = (currentSongIndex + 1) % songIds.length;
+        nextIframe = createIframe(songIds[nextSongIndex], false);
+        playerContainer.appendChild(nextIframe);
+        
+        // Attendre un peu que l'iframe se charge
+        setTimeout(() => {
+            // Démarrer le crossfade
+            performCrossfade();
+        }, 1000);
+    }, crossfadeStartTime * 1000);
+}
+
+// Fonction pour effectuer le crossfade
+function performCrossfade() {
+    console.log("Début du crossfade...");
+    
+    // Fade out de la chanson actuelle
+    currentIframe.style.opacity = "0";
+    
+    // Fade in de la chanson suivante
+    nextIframe.style.opacity = "1";
+    
+    // Attendre la fin du crossfade
     setTimeout(() => {
-        const trackToLoad = nextTrackPreload || selectRandomTrack();
-        if (trackToLoad) {
-            loadTrack(trackToLoad);
-            // Préchargement de la prochaine piste
-            preloadNextTrack();
-        } else {
-            iframeTarget.innerHTML = '<p class="loading-message">Erreur : Aucun morceau trouvé.</p>';
-            nowPlayingText.textContent = 'Erreur de sélection';
-        }
-        isLoading = false;
-    }, 100);
+        console.log("Fin du crossfade");
+        
+        // Supprimer l'ancien iframe
+        playerContainer.removeChild(currentIframe);
+        
+        // Mettre à jour les index
+        currentSongIndex = nextSongIndex;
+        currentIframe = nextIframe;
+        nextIframe = null;
+        
+        // Configurer le prochain crossfade
+        const currentSongDuration = songDurations[songIds[currentSongIndex]];
+        const crossfadeStartTime = currentSongDuration - crossfadeDuration;
+        
+        console.log(`Prochaine chanson: ${songIds[currentSongIndex]}`);
+        console.log(`Prochain crossfade dans ${crossfadeStartTime} secondes`);
+        
+        crossfadeTimer = setTimeout(() => {
+            // Recommencer le processus pour la prochaine chanson
+            nextSongIndex = (currentSongIndex + 1) % songIds.length;
+            nextIframe = createIframe(songIds[nextSongIndex], false);
+            playerContainer.appendChild(nextIframe);
+            
+            setTimeout(() => {
+                performCrossfade();
+            }, 1000);
+        }, crossfadeStartTime * 1000);
+    }, crossfadeDuration * 1000);
 }
 
-function startRadioFirstTime() {
-    if (radioHasStarted) return;
-    radioHasStarted = true;
-    initialOverlay.classList.add('hidden');
-    // Préchargement de la première piste
-    preloadNextTrack();
-    loadNextTrack();
-}
-
-// Écouteurs d'événements
-function setupEventListeners() {
-    categoryButtonsContainer.addEventListener('click', (event) => {
-        if (event.target.matches('.category-button')) {
-            currentCategory = event.target.dataset.category;
-            updateCategoryButtons();
-            radioHasStarted ? loadNextTrack() : startRadioFirstTime();
-        }
-    });
-
-    initialOverlay.addEventListener('click', startRadioFirstTime);
-    nextTrackButton.addEventListener('click', () => {
-        if (isLoading) return;
-        if (!radioHasStarted) startRadioFirstTime();
-        else loadNextTrack();
-    });
-
-    window.addEventListener('offline', () => {
-        iframeTarget.innerHTML = '<p class="loading-message">Connexion perdue. Mode hors ligne activé.</p>';
-        nowPlayingText.textContent = 'Mode hors ligne';
-    });
-    window.addEventListener('online', () => {
-        if (radioHasStarted) loadNextTrack();
-    });
-}
-
-// Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    if (!sunoTracks || sunoTracks.length === 0) {
-        initialOverlay.innerHTML = '<p class="loading-message" style="color: red;">Erreur: Liste de morceaux vide !</p>';
-        return;
-    }
-    updateCategoryButtons();
-    setupEventListeners();
-
-    window.addEventListener('load', () => {
-        preloader.classList.add('hidden');
-    });
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(() => console.log('Service Worker enregistré'))
-            .catch(err => console.error('Erreur Service Worker:', err));
+// Bouton pour passer à la chanson suivante manuellement
+document.getElementById('nextButton').addEventListener('click', function() {
+    // Effacer le timer actuel
+    clearTimeout(crossfadeTimer);
+    
+    // Si un crossfade est déjà en cours
+    if (nextIframe) {
+        // Accélérer la transition
+        currentIframe.style.transition = "opacity 0.5s ease-in-out";
+        nextIframe.style.transition = "opacity 0.5s ease-in-out";
+        
+        // Forcer la fin du crossfade
+        currentIframe.style.opacity = "0";
+        nextIframe.style.opacity = "1";
+        
+        setTimeout(() => {
+            playerContainer.removeChild(currentIframe);https://github.com/ericsotoca/webradio/tree/main
+            currentSongIndex = nextSongIndex;
+            currentIframe = nextIframe;
+            nextIframe = null;
+            
+            // Démarrer le prochain timer
+            const currentSongDuration = songDurations[songIds[currentSongIndex]];
+            const crossfadeStartTime = currentSongDuration - crossfadeDuration;
+            
+            crossfadeTimer = setTimeout(() => {
+                nextSongIndex = (currentSongIndex + 1) % songIds.length;
+                nextIframe = createIframe(songIds[nextSongIndex], false);
+                playerContainer.appendChild(nextIframe);
+                
+                setTimeout(() => {
+                    performCrossfade();
+                }, 1000);
+            }, crossfadeStartTime * 1000);
+        }, 500);
+    } else {
+        // Commencer un nouveau crossfade immédiatement
+        nextSongIndex = (currentSongIndex + 1) % songIds.length;
+        nextIframe = createIframe(songIds[nextSongIndex], false);
+        playerContainer.appendChild(nextIframe);
+        
+        setTimeout(() => {
+            performCrossfade();
+        }, 1000);
     }
 });
+
+// Démarrer la lecture au chargement de la page
+window.onload = startPlayback;
