@@ -44,7 +44,6 @@ const sunoTracks = [
     { "id": "cf95498e-1031-466d-95bc-b8e8c067d2f4", "title": "The Last Dance", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 219 },
     { "id": "754c51f6-790f-44dd-868c-c89a7d16e2f3", "title": "The Ocean's Call", "artist": "Suno AI.", "categorie": "Horizon Infini", "duration": 194 },
     { "id": "a200b759-03e4-47c2-b724-6683187e0b3f", "title": "The Whispering Pines", "artist": "Suno AI", "categorie": "Quête Sauvage", "duration": 206 },
-    { "id": "187fd87d-614b-4fc8-bd98-9420e9939795", "title": "Thirst of Triumph", "artist": "GROOVEBOT", "categorie": "Quête Sauvage", "duration": 170 },
     { "id": "d0def131-ec26-498a-9fd9-89952c2f060b", "title": "Tongue Twisters part two", "artist": "STEVE VAN GULICK-HILL", "categorie": "Esprit Aiguisé", "duration": 135 },
     { "id": "1d2906a9-ee4a-44d9-a71e-164b53c1c496", "title": "Vanilla Suno", "artist": "Brado with the face for radio.", "categorie": "Horizon Infini", "duration": 231 },
     { "id": "997e0359-8457-4c24-9b6a-42ba76a7ee0d", "title": "Victory Unveiled", "artist": "GROOVEBOT.", "categorie": "Décollage Express", "duration": 180 },
