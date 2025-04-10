@@ -4,8 +4,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOTOCA WebRadio - Expérience Musicale Unique</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="logo.jpg" as="image">
+    
+    <!-- CSS Intégré (anciennement styles.css) -->
+    <style>
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+
+        body { 
+            background-color: #121212; 
+            color: #ffffff; 
+            padding: 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        header { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            padding: 20px 0; 
+            border-bottom: 1px solid #333; 
+            width: 100%; 
+        }
+
+        .logo { 
+            width: 100%; /* Ajusté pour être responsive */
+            max-width: 300px; /* Limite la taille max pour ne pas être trop grand */
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        /* Styles pour les boutons de catégorie (maintenant inutilisés, mais laissés pour référence ou réutilisation future) */
+        .category-buttons { 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 20px;
+            padding: 10px 5px;
+        }
+
+        .category-button { 
+            background-color: #333; 
+            color: white; 
+            border: none; 
+            border-radius: 20px; 
+            padding: 12px 25px; 
+            font-size: 1em; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            flex: 0 1 auto;
+            min-width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .category-button:hover { 
+            background-color: #5c67f2; 
+            transform: translateY(-2px); 
+        }
+
+        .category-button.active { 
+            background-color: #5c67f2; 
+        }
+
+        .category-button:focus { 
+            outline: 2px solid #5c67f2; 
+            outline-offset: 2px; 
+        }
+        /* Fin des styles de boutons de catégorie */
+
+        .loading-message { 
+            text-align: center; 
+            padding: 60px 20px; 
+            font-style: italic; 
+            color: #888; 
+            min-height: 240px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .iframe-container { 
+            width: 100%; 
+            margin-bottom: 20px; 
+            background-color: #222; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+            min-height: 240px; 
+            position: relative; 
+        }
+
+        #suno-iframe { 
+            display: block; 
+            border: none; 
+            width: 100%; 
+            height: 240px; 
+            transition: opacity 0.3s ease; 
+        }
+
+        .controls { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin: 25px 0; 
+        }
+
+        .button-next { 
+            display: inline-block; 
+            background-color: #5c67f2; 
+            color: white; 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: 20px; 
+            font-size: 1.08em; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(92, 103, 242, 0.3); 
+            position: absolute; 
+            bottom: 10px; 
+            right: 10px; 
+            z-index: 10; 
+        }
+
+        .button-next:hover { 
+            background-color: #4a54cc; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 8px rgba(92, 103, 242, 0.4); 
+        }
+
+        .button-next:focus { 
+            outline: 2px solid #5c67f2; 
+            outline-offset: 2px; 
+        }
+
+        .support-section { 
+            text-align: center; 
+            margin: 40px 0; 
+            padding: 20px; 
+            background-color: rgba(92, 103, 242, 0.1); 
+            border-radius: 8px; 
+            border: 1px solid rgba(92, 103, 242, 0.3); 
+        }
+
+        .support-title { 
+            font-size: 1.5em; 
+            color: #5c67f2; 
+            margin-bottom: 15px; 
+        }
+
+        .support-text { 
+            margin-bottom: 20px; 
+            line-height: 1.5; 
+            color: #aaa; 
+        }
+
+        .support-buttons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
+
+        .support-button { 
+            display: inline-block; 
+            background-color: #f28c31; 
+            color: white; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: all 0.3s ease; 
+        }
+
+        .support-button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(242, 140, 49, 0.4); 
+        }
+
+        .paypal-button { 
+            background-color: #0070ba; 
+        }
+
+        .attribution { 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            font-size: 0.8em; 
+            color: #666; 
+            text-align: center; 
+            border-top: 1px solid #333; 
+        }
+
+        .attribution a { 
+            color: #5c67f2; 
+            text-decoration: none; 
+        }
+
+        .attribution a:hover { 
+            text-decoration: underline; 
+        }
+
+        .now-playing { 
+            text-align: center; 
+            margin-top: 15px; 
+            font-size: 0.9em; 
+            color: #aaa; 
+            min-height: 1.2em; 
+        }
+
+        #initial-play-overlay { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 40px 20px; 
+            background-color: rgba(34, 34, 34, 0.8); 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: opacity 0.3s ease-out; 
+        }
+
+        #initial-play-overlay.hidden { 
+            opacity: 0; 
+            pointer-events: none; 
+        }
+
+        #start-radio-button { 
+            background-color: #5c67f2; 
+            color: white; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 30px; 
+            font-size: 1.1em; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            margin-top: 15px; 
+        }
+
+        #start-radio-button:hover { 
+            background-color: #4a54cc; 
+            transform: scale(1.05); 
+        }
+
+        #start-radio-button:focus { 
+            outline: 2px solid #5c67f2; 
+            outline-offset: 2px; 
+        }
+
+        .overlay-icon { 
+            font-size: 3em; 
+            color: #5c67f2; 
+            margin-bottom: 10px; 
+        }
+
+        .overlay-text { 
+            font-size: 0.9em; 
+            color: #ccc; 
+            margin-top: 15px; 
+        }
+
+        .progress-bar { 
+            height: 5px; 
+            background: #5c67f2; 
+            width: 0; 
+            transition: width linear; /* Mise à jour plus fluide */
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+        }
+
+        /* Préchargeur */
+        .preloader { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #121212; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+            transition: opacity 0.5s ease-out; /* Ajout transition pour la disparition */
+        }
+
+        .spinner { 
+            width: 40px; 
+            height: 40px; 
+            border: 4px solid #5c67f2; 
+            border-top: 4px solid transparent; 
+            border-radius: 50%; 
+            animation: spin 1s linear infinite; 
+        }
+
+        .preloader p {
+            margin-top: 15px;
+            color: #aaa;
+        }
+
+        .preloader.hidden { 
+            opacity: 0;
+            pointer-events: none; /* Empêche l'interaction une fois caché */
+        }
+
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+
+        /* Styles responsifs */
+        @media (max-width: 600px) {
+            body { 
+                padding: 10px; 
+            }
+            
+            .controls { 
+                /* Pas nécessaire de mettre en colonne si seul le bouton next reste */
+            }
+            
+            /* Styles responsifs pour les boutons de catégorie (inutilisés mais gardés) */
+            .category-buttons { 
+                gap: 10px; 
+            }
+            
+            .category-button { 
+                padding: 10px 20px; 
+                font-size: 0.9em; 
+            }
+            /* Fin styles responsifs boutons catégorie */
+            
+            #start-radio-button { 
+                padding: 12px 24px; 
+                font-size: 1em; 
+            }
+            
+            .overlay-icon { 
+                font-size: 2.5em; 
+            }
+            
+            .button-next { 
+                padding: 10px 20px; /* Légèrement plus grand sur mobile */
+                font-size: 0.9em; /* Ajustement taille police */
+                bottom: 10px; 
+                right: 10px; 
+            }
+        }
+
+        /* Adaptation pour les petits écrans */
+        @media screen and (max-width: 480px) {
+             /* Styles responsifs pour les boutons de catégorie (inutilisés mais gardés) */
+            .category-buttons {
+                gap: 5px;
+            }
+            
+            .category-button {
+                min-width: 80px;
+                font-size: 12px;
+                padding: 8px 6px;
+                flex: 0 1 calc(50% - 5px);
+            }
+             /* Fin styles responsifs boutons catégorie */
+
+             .support-buttons {
+                gap: 10px; /* Moins d'espace entre les boutons de support */
+             }
+             .support-button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+             }
+        }
+
+        /* Pour les écrans très étroits */
+        @media screen and (max-width: 360px) {
+             /* Styles responsifs pour les boutons de catégorie (inutilisés mais gardés) */
+            .category-button {
+                flex: 1 1 100%;
+                margin-bottom: 5px;
+            }
+             /* Fin styles responsifs boutons catégorie */
+             .logo {
+                 max-width: 250px; /* Encore plus petit logo */
+             }
+             .button-next {
+                 padding: 8px 16px;
+                 font-size: 0.8em;
+             }
+        }
+    </style>
 </head>
 <body>
     <div id="preloader" class="preloader">
@@ -14,16 +414,11 @@
     </div>
 
     <header>
+        <!-- Assurez-vous que logo.jpg est dans le même dossier que index.html -->
         <img src="logo.jpg" alt="SOTOCA WebRadio Logo" class="logo">
     </header>
 
-    <div class="category-buttons" role="tablist">
-        <button class="category-button active" data-category="horizon" role="tab" aria-selected="true" aria-controls="category-horizon">Horizon Infini</button>
-        <button class="category-button" data-category="calme" role="tab" aria-selected="false" aria-controls="category-calme">Calme Puissant</button>
-        <button class="category-button" data-category="esprit" role="tab" aria-selected="false" aria-controls="category-esprit">Esprit Aiguisé</button>
-        <button class="category-button" data-category="quete" role="tab" aria-selected="false" aria-controls="category-quete">Quête Sauvage</button>
-        <button class="category-button" data-category="decollage" role="tab" aria-selected="false" aria-controls="category-decollage">Décollage Express</button>
-    </div>
+    <!-- Les boutons de catégorie ont été supprimés d'ici -->
 
     <div class="iframe-container" id="player-container">
         <div id="initial-play-overlay">
@@ -57,6 +452,365 @@
         <p>Tous les morceaux sont fournis par <a href="https://suno.com" target="_blank">Suno</a> sous licence libre. Cette radio est un projet indépendant et n'est pas affiliée à Suno.</p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- JavaScript Intégré (anciennement script.js) -->
+    <script>
+        // Liste complète des pistes (propriété "categorie" conservée mais non utilisée pour la sélection)
+        const sunoTracks = [
+            { "id": "674e86cb-0395-414a-a291-a4c11a9efc4d", "title": "50 decimal places of pi", "artist": "Suno AI", "categorie": "Esprit Aiguisé", "duration": 180 },
+            { "id": "1be45c7f-efee-4288-bb46-24bc4ac633a6", "title": "A Walk in the Park", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 131 },
+            { "id": "25a32452-1bfd-4791-b378-7584a0be64f5", "title": "Aerial Awakening", "artist": "Zneip.", "categorie": "Calme Puissant", "duration": 214 },
+            { "id": "295f7691-9fe1-40d0-bd6d-e7a047d32b64", "title": "After the rain", "artist": "sonoa", "categorie": "Esprit Aiguisé", "duration": 169 },
+            { "id": "afd7cad2-6112-4670-9274-378468a1c59d", "title": "After the rain", "artist": "RareRecordLabels1439", "categorie": "Calme Puissant", "duration": 239 },
+            { "id": "137ba8ff-3d61-4d79-acfe-7644999cdba8", "title": "Are You Not Entertained?", "artist": "Rattvisa.", "categorie": "Horizon Infini", "duration": 230 },
+            { "id": "3a09ffcc-f677-42ad-9ec0-dd2e01b7adca", "title": "Aurora Dance (Instrumental)", "artist": "Xian - ExclusiveKnob421", "categorie": "Calme Puissant", "duration": 140 },
+            { "id": "f8373d7f-c0a3-4a7d-81e0-9313e1309fa0", "title": "Banana Republic", "artist": "YouNoWhooIs", "categorie": "Esprit Aiguisé", "duration": 165 },
+            { "id": "533b9834-52a5-4100-8d05-9ef605a4e715", "title": "Blues in the light of dawn", "artist": "GROOVEBOT.", "categorie": "Calme Puissant", "duration": 183 },
+            { "id": "16555cd3-3aab-4f6d-b02c-8c15ebf6a8f1", "title": "Cade la neve", "artist": "Jazz56", "categorie": "Calme Puissant", "duration": 240 },
+            { "id": "d2002f05-15f7-4490-bc84-dfdb6f033b90", "title": "Caminhos da Vida", "artist": "Sueli.", "categorie": "Horizon Infini", "duration": 240 },
+            { "id": "948b8276-6714-460f-b526-033354e094ce", "title": "Cancer", "artist": "Joy'elle", "categorie": "Quête Sauvage", "duration": 157 },
+            { "id": "a3bc664e-8ac0-4072-b340-2e847b240081", "title": "Cese y Desista", "artist": "Tiborio.", "categorie": "Quête Sauvage", "duration": 265 },
+            { "id": "4ec14116-ac9b-49e3-ae62-99eb2f1ac0c2", "title": "Circles (Remastered)", "artist": "Claraco.", "categorie": "Esprit Aiguisé", "duration": 239 },
+            { "id": "6f9a9ed2-0082-4536-8db9-6cfca9c621ef", "title": "Corner lights", "artist": "HiddenHand.", "categorie": "Décollage Express", "duration": 184 },
+            { "id": "d012de10-e877-43f1-92f4-9bd2e706f52d", "title": "🎶 Darlin', Don't You Go 🎶", "artist": "RetroDream.", "categorie": "Calme Puissant", "duration": 206 },
+            { "id": "5a285fbc-f64a-418a-8b2e-05e3e7990899", "title": "Deep Night", "artist": "Moisty.", "categorie": "Décollage Express", "duration": 185 },
+            { "id": "e48c0ee8-24c8-459b-8d91-469dbd6fc3a5", "title": "Dialectic (accept it)", "artist": "yolkhead", "categorie": "Calme Puissant", "duration": 239 },
+            { "id": "a3e445c8-b7e6-4f11-9c5c-2e7281c8a68e", "title": "Ethereal Journey", "artist": "GROOVEBOT.", "categorie": "Calme Puissant", "duration": 160 },
+            { "id": "b4661e87-97c3-4b6e-87ca-f31f47ac40ef", "title": "Eu Não Ando Sumido", "artist": "Roberto na Área.", "categorie": "Calme Puissant", "duration": 168 },
+            { "id": "2160a428-d7c4-4892-b250-9a739a60e475", "title": "Fuja de quem não quer te perder mas não sabe te amar", "artist": "Roberto na Área.", "categorie": "Calme Puissant", "duration": 157 },
+            { "id": "176e197f-0656-4351-9516-1ebc05d4855f", "title": "Her First Heartbreak", "artist": "Brandon Luke.", "categorie": "Calme Puissant", "duration": 185 },
+            { "id": "3107d309-3316-4b00-bc7c-f590038d9e5b", "title": "I Can Wait 100 Years", "artist": "Wetcircuit.", "categorie": "Esprit Aiguisé", "duration": 265 },
+            { "id": "0e09c799-1259-48a0-9810-c8b9b6dab30d", "title": "I Miss You Remix", "artist": "Eclonix.", "categorie": "Horizon Infini", "duration": 238 },
+            { "id": "ffa48fbf-ac87-4a02-8cf2-f3766f518d58", "title": "I Spent 3000 Credits on This Song", "artist": "Nanashi_Zero🀄️", "categorie": "Décollage Express", "duration": 194 },
+            { "id": "fd95f5af-5b7f-493b-918c-8c2cf7380db4", "title": "Inclusive Backdoor Man (Pilloe mix)", "artist": "CelticSemitone.", "categorie": "Quête Sauvage", "duration": 190 },
+            { "id": "3899e808-d76f-48d4-b850-3ab3c6da6a88", "title": "Island Breeze", "artist": "DrollFire383.", "categorie": "Calme Puissant", "duration": 240 },
+            { "id": "1892cdb4-3eca-41fe-b341-e4cdc3fca285", "title": "Jetzt waßt wi da oalles besser (Remastered)", "artist": "Jenseits der Grenzen", "categorie": "Quête Sauvage", "duration": 187 },
+            { "id": "e9e6a0fb-d175-4678-a1a0-b8ab100e3d37", "title": "Kangaroo Rock", "artist": "JeanMiK2.", "categorie": "Quête Sauvage", "duration": 165 },
+            { "id": "4d8aac83-9cf6-48ce-af71-0b818df806db", "title": "康德之桥", "artist": "ReservedTremolo210.", "categorie": "Horizon Infini", "duration": 229 },
+            { "id": "75b62359-9b3e-4ffe-839b-0eb7c11de71e", "title": "Let's Take a Chance", "artist": "MyDreamSongs.", "categorie": "Calme Puissant", "duration": 213 },
+            { "id": "4ed9cd17-d8e9-4ab9-9514-e83e7597886a", "title": "Lokah samastah sukhino bhavantu", "artist": "Sotoca AI.", "categorie": "Horizon Infini", "duration": 118 },
+            { "id": "b50869d5-fd45-4219-987b-22d68621178e", "title": "Love and Peace", "artist": "Vibe Music Ai Records.", "categorie": "Calme Puissant", "duration": 194 },
+            { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", "title": "Maylo", "artist": "Jenseits der Grenzen", "categorie": "Horizon Infini", "duration": 223 },
+            { "id": "ed4bc352-89f2-4f08-b21c-3fef7cb86245", "title": "Minute By Minute", "artist": "Brado with the face for radio", "categorie": "Esprit Aiguisé", "duration": 205 },
+            { "id": "917b4a0f-a658-4476-a00d-a8b1ba08f242", "title": "My Gal Done Got Crazy", "artist": "BrainBendersBanter.", "categorie": "Quête Sauvage", "duration": 227 },
+            { "id": "1f54ea49-dddd-47b3-a3d3-264f1579caa0", "title": "No apologies (Remastered)", "artist": "Ovi", "categorie": "Esprit Aiguisé", "duration": 151 },
+            { "id": "9d601e01-1282-4a76-afb5-b710edc38f8f", "title": "Onde cristalline de sérénité", "artist": "JeanMiK2.", "categorie": "Calme Puissant", "duration": 144 },
+            { "id": "aa0febaa-6c8b-444b-a34f-db5155272b2b", "title": "Peaceful Meadow", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 152 },
+            { "id": "6805b1a2-1700-41b3-80db-c285045e99e8", "title": "PODŁOŻE BUJANE", "artist": "ZoleMusicAI.", "categorie": "Calme Puissant", "duration": 223 }, // Note: ID dupliqué, gardé tel quel
+            { "id": "72fd52d4-bb7e-48aa-a5e3-0115540c5a62", "title": "Pulse Beneath the Waves", "artist": "Sotoca AI.", "categorie": "Calme Puissant", "duration": 240 },
+            { "id": "67764712-b129-4f78-bab2-1c03e2014655", "title": "Rambling Railroad", "artist": "JeanMiK2.", "categorie": "Horizon Infini", "duration": 133 },
+            { "id": "d4cd5909-e7cc-4751-a6e1-f7a28f44808a", "title": "Reflections in Solitude", "artist": "Henryhan", "categorie": "Calme Puissant", "duration": 179 },
+            { "id": "5d4edb40-0565-4142-9758-6b3a90f6a2fd", "title": "Reggae Love Vibes", "artist": "Suno AI.", "categorie": "Horizon Infini", "duration": 225 },
+            { "id": "1dba28fb-3dfa-41b6-b438-cc81b587d40c", "title": "Saudade", "artist": "GROOVEBOT.", "categorie": "Horizon Infini", "duration": 219 },
+            { "id": "8cc87e22-af6f-46fb-9d8a-ed1623547c31", "title": "Serene Lake", "artist": "Suno AI", "categorie": "Esprit Aiguisé", "duration": 223 },
+            { "id": "3cc18362-3842-405b-9368-3a651cc0f9d1", "title": "Slow Groove Horizon", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 240 },
+            { "id": "b9d4abb4-1df8-40c5-952c-10e72f16df54", "title": "Sunrise Symphony", "artist": "Suno AI", "categorie": "Calme Puissant", "duration": 198 },
+            { "id": "70d69e22-05ce-477e-942e-cde1cd4da747", "title": "Sunset in early November", "artist": "WryConductor408.", "categorie": "Horizon Infini", "duration": 240 },
+            { "id": "990e18ee-59a7-4e4a-88fe-5300347faa31", "title": "Сила Думки", "artist": "Tosik.", "categorie": "Horizon Infini", "duration": 240 },
+            { "id": "cf95498e-1031-466d-95bc-b8e8c067d2f4", "title": "The Last Dance", "artist": "Suno AI", "categorie": "Horizon Infini", "duration": 219 },
+            { "id": "b6fcebe0-7eb9-4829-98c2-159602f24161", "title": "The Journey Begins", "artist": "Suno AI.", "categorie": "Horizon Infini", "duration": 253 },
+            { "id": "754c51f6-790f-44dd-868c-c89a7d16e2f3", "title": "The Ocean's Call", "artist": "Suno AI.", "categorie": "Horizon Infini", "duration": 194 },
+            { "id": "a200b759-03e4-47c2-b724-6683187e0b3f", "title": "The Whispering Pines", "artist": "Suno AI", "categorie": "Quête Sauvage", "duration": 206 },
+            { "id": "d0def131-ec26-498a-9fd9-89952c2f060b", "title": "Tongue Twisters part two", "artist": "STEVE VAN GULICK-HILL", "categorie": "Esprit Aiguisé", "duration": 135 },
+            { "id": "997e0359-8457-4c24-9b6a-42ba76a7ee0d", "title": "Victory Unveiled", "artist": "GROOVEBOT.", "categorie": "Décollage Express", "duration": 180 },
+            { "id": "501f08e0-47b5-457c-b4ba-72b02fe033a2", "title": "Voyage Galactique", "artist": "JeanMiK2.", "categorie": "Horizon Infini", "duration": 240 },
+            { "id": "60035e3c-4024-4438-a0bf-85bea5b5fcd3", "title": "Well Well Well", "artist": "Vibe Music Ai Records.", "categorie": "Calme Puissant", "duration": 223 },
+            { "id": "11e0e768-b87b-4fae-b0b4-4e8dc6374e44", "title": "Where the Hell Am I?", "artist": "Vrthtbox.", "categorie": "Esprit Aiguisé", "duration": 228 },
+            { "id": "569c8380-bacf-4bd3-a35c-7d468c7b9602", "title": "Whispers of the Delta", "artist": "Sotoca AI.", "categorie": "Esprit Aiguisé", "duration": 70 },
+            { "id": "379a2b6a-d9fb-44f2-b3c3-9f608e223d04", "title": "You Need to Learn to Drive", "artist": "The Hulkster.", "categorie": "Esprit Aiguisé", "duration": 281 },
+            { "id": "65738b12-6995-4421-be9f-e3083e97ae2b", "title": "𝕀𝕟𝕤𝕥𝕣𝕦𝕞𝕖𝕟𝕥𝕒𝕝", "artist": "𝐑𝐞𝐧𝐡𝐚𝐋 🔞.", "categorie": "Esprit Aiguisé", "duration": 117 },
+            { "id": "e1917ac3-d715-457a-b17c-e21982141a53", "title": "🇷🇺Mellstroy Плаки плаки", "artist": "Wondarlove", "categorie": "Calme Puissant", "duration": 164 }
+        ];
+
+        // Variables globales (sans currentCategory)
+        let currentTrackId = null;
+        let nextTrackTimer = null;
+        let radioHasStarted = false;
+        let isLoading = false;
+        let startTime = null;
+        let nextTrackPreload = null; // Pour le préchargement
+
+        // Éléments du DOM
+        const preloader = document.getElementById('preloader');
+        // categoryButtonsContainer n'est plus nécessaire
+        const playerContainer = document.getElementById('player-container');
+        const initialOverlay = document.getElementById('initial-play-overlay');
+        const startButton = document.getElementById('start-radio-button');
+        const iframeTarget = document.getElementById('iframe-target');
+        const nowPlayingText = document.getElementById('now-playing-text');
+        const nextTrackButton = document.getElementById('next-track');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Fonction de préchargement (inchangée)
+        function preloadNextTrack() {
+            nextTrackPreload = selectRandomTrack();
+        }
+
+        // Fonctions Utilitaires (getPlayHistory, updatePlayHistory inchangées)
+        function getPlayHistory() {
+            try {
+                const history = localStorage.getItem('sunoRadioHistory');
+                return history ? JSON.parse(history) : [];
+            } catch (e) {
+                console.error("Erreur lecture historique:", e);
+                return [];
+            }
+        }
+
+        function updatePlayHistory(trackId) {
+            if (!trackId) return;
+            let history = getPlayHistory();
+            const track = sunoTracks.find(t => t.id === trackId);
+            if (track) {
+                nowPlayingText.textContent = `En cours: ${track.title} par ${track.artist}`;
+                // Stocke aussi la catégorie même si non utilisée pour la sélection, peut être utile pour l'historique
+                const historyEntry = {
+                    id: trackId,
+                    title: track.title,
+                    artist: track.artist,
+                    category: track.categorie, // Gardé pour info dans l'historique
+                    timestamp: new Date().toISOString()
+                };
+                // Évite d'ajouter la même piste consécutivement à l'historique affiché (si rechargement rapide)
+                if (history.length === 0 || history[0].id !== trackId) {
+                    history.unshift(historyEntry);
+                    if (history.length > 15) history = history.slice(0, 15); // Limite l'historique
+                    try {
+                        localStorage.setItem('sunoRadioHistory', JSON.stringify(history));
+                    } catch (e) {
+                        console.error("Erreur sauvegarde historique:", e);
+                    }
+                }
+            } else {
+                 nowPlayingText.textContent = 'Information piste indisponible';
+            }
+        }
+
+        // getTracksByCategory est supprimée
+
+        // Sélectionne une piste aléatoire PARMI TOUTES les pistes
+        function selectRandomTrack() {
+            const history = getPlayHistory();
+            let availableTracks = [...sunoTracks]; // Copie de toutes les pistes
+
+            if (availableTracks.length === 0) {
+                console.error("Erreur : La liste sunoTracks est vide !");
+                return null; // Retourne null si la liste est vide
+            }
+
+            // Filtre pour éviter les 2 dernières pistes jouées si possible
+            if (history.length > 0 && availableTracks.length > 2) {
+                const recentTrackIds = [...new Set(history.slice(0, 2).map(item => item.id))];
+                const filteredTracks = availableTracks.filter(track => !recentTrackIds.includes(track.id));
+                // Utilise les pistes filtrées seulement s'il en reste
+                if (filteredTracks.length > 0) {
+                    availableTracks = filteredTracks;
+                }
+            }
+            
+            // Retourne une piste aléatoire parmi les disponibles
+            const randomIndex = Math.floor(Math.random() * availableTracks.length);
+            return availableTracks[randomIndex];
+        }
+
+        // updateCategoryButtons est supprimée
+
+        // Met à jour la barre de progression (inchangée)
+        function updateProgress(track) {
+            // Réinitialise la barre de progression
+            progressBar.style.transition = 'none'; // Désactive la transition pour la réinitialisation
+            progressBar.style.width = '0%';
+            // Force le reflow pour s'assurer que la réinitialisation est appliquée avant de réactiver la transition
+            void progressBar.offsetWidth; 
+            progressBar.style.transition = `width ${track.duration || 180}s linear`; // Réactive la transition
+
+            if (track.duration && track.duration > 0) {
+                startTime = Date.now();
+                 // Met à jour directement à 100% après la durée prévue
+                progressBar.style.width = '100%'; 
+                 // Utilise requestAnimationFrame pour une mise à jour plus fluide si nécessaire (optionnel)
+                /*
+                let animationFrameId;
+                function step() {
+                    const elapsed = (Date.now() - startTime) / 1000;
+                    const progress = Math.min((elapsed / track.duration) * 100, 100);
+                    progressBar.style.width = `${progress}%`;
+                    if (progress < 100) {
+                       animationFrameId = requestAnimationFrame(step);
+                    }
+                }
+                animationFrameId = requestAnimationFrame(step); 
+                // Assure-toi d'annuler l'animation frame si une nouvelle piste est chargée avant la fin
+                // (à ajouter dans loadTrack avant de démarrer une nouvelle updateProgress)
+                */
+            } else {
+                 progressBar.style.width = '0%'; // Pas de durée, pas de progression
+                 console.warn(`Durée manquante ou invalide pour la piste : ${track.title}`);
+            }
+        }
+
+
+        // Chargement de la piste (modifiée pour enlever la référence à la catégorie pour le stockage historique, mais la donnée est toujours là)
+        function loadTrack(track) {
+            if (!track || !track.id) {
+                console.error("Tentative de chargement d'une piste invalide:", track);
+                iframeTarget.innerHTML = '<p class="loading-message">Erreur : Piste invalide. Sélection d\'une autre piste...</p>';
+                nowPlayingText.textContent = 'Erreur de chargement';
+                 // Essaye de charger une autre piste après un court délai
+                setTimeout(loadNextTrack, 2000);
+                return;
+            }
+
+            console.log(`Chargement: ${track.title} (ID: ${track.id})`);
+            currentTrackId = track.id;
+            if (nextTrackTimer) clearTimeout(nextTrackTimer); // Annule le timer précédent
+
+            // Création de l'iframe
+            const iframe = document.createElement('iframe');
+            iframe.id = 'suno-iframe';
+            iframe.src = `https://suno.com/embed/${track.id}?autoplay=true`;
+            iframe.title = `Lecteur Suno pour ${track.title}`;
+            iframe.allow = 'autoplay';
+            iframe.loading = 'lazy'; // Chargement différé
+            iframe.onerror = () => {
+                console.error(`Erreur chargement iframe pour ${track.id}`);
+                iframeTarget.innerHTML = '<p class="loading-message">Erreur : Impossible de charger ce morceau. Passage au suivant...</p>';
+                // Essaye de charger une autre piste après un délai
+                setTimeout(loadNextTrack, 3000); 
+            };
+
+            // Remplace le contenu précédent par la nouvelle iframe
+            iframeTarget.innerHTML = ''; 
+            iframeTarget.appendChild(iframe);
+            
+            // Met à jour l'historique et l'affichage "En cours"
+            updatePlayHistory(track.id);
+            // Met à jour la barre de progression
+            updateProgress(track);
+            
+            // Précharge la piste suivante PENDANT que celle-ci joue
+            preloadNextTrack(); 
+            
+            // Programme le passage automatique à la piste suivante
+            // Utilise la durée de la piste + une petite marge (ex: 3 secondes)
+            const nextTrackDelay = (track.duration ? track.duration * 1000 : 180000) + 3000; // 180s par défaut + 3s
+            console.log(`Prochaine piste dans ${(nextTrackDelay / 1000).toFixed(1)} secondes`);
+            nextTrackTimer = setTimeout(loadNextTrack, nextTrackDelay);
+        }
+
+        // Charge la piste suivante (inchangée logiquement, mais utilise la piste préchargée)
+        function loadNextTrack() {
+            // Ne fait rien si la radio n'a pas démarré ou si un chargement est déjà en cours
+            if (!radioHasStarted || isLoading) return; 
+            
+            isLoading = true; // Marque comme en chargement
+            iframeTarget.innerHTML = '<p class="loading-message">Chargement du prochain morceau...</p>';
+            nowPlayingText.textContent = 'Sélection en cours...';
+            progressBar.style.transition = 'none'; // Arrête transition barre de progression
+            progressBar.style.width = '0%'; // Réinitialise barre de progression
+            if (nextTrackTimer) clearTimeout(nextTrackTimer); // Annule tout timer existant
+
+            // Utilise un petit délai pour afficher le message de chargement
+            setTimeout(() => {
+                // Utilise la piste préchargée si disponible, sinon en sélectionne une nouvelle
+                const trackToLoad = nextTrackPreload || selectRandomTrack(); 
+                nextTrackPreload = null; // Réinitialise la piste préchargée
+
+                if (trackToLoad) {
+                    loadTrack(trackToLoad);
+                     // Précharge la *prochaine* piste maintenant que la précédente est lancée
+                    preloadNextTrack(); 
+                } else {
+                    console.error("Aucune piste à charger n'a pu être sélectionnée.");
+                    iframeTarget.innerHTML = '<p class="loading-message">Erreur : Aucun morceau trouvé pour le chargement.</p>';
+                    nowPlayingText.textContent = 'Erreur de sélection';
+                    // Peut-être essayer à nouveau après un délai ?
+                    // setTimeout(loadNextTrack, 5000); 
+                }
+                isLoading = false; // Marque la fin du chargement
+            }, 150); // Délai court pour l'affichage du message
+        }
+
+        // Démarre la radio pour la première fois (inchangée)
+        function startRadioFirstTime() {
+            if (radioHasStarted) return;
+            console.log("Démarrage de la radio...");
+            radioHasStarted = true;
+            initialOverlay.classList.add('hidden'); // Cache l'overlay de démarrage
+            
+            // Précharge la première piste avant de la lancer
+            preloadNextTrack(); 
+            // Lance le processus de chargement de la première piste
+            loadNextTrack(); 
+        }
+
+        // Écouteurs d'événements (modifiés pour enlever le listener des catégories)
+        function setupEventListeners() {
+            // Listener pour le bouton/overlay de démarrage
+            initialOverlay.addEventListener('click', startRadioFirstTime);
+            startButton.addEventListener('click', startRadioFirstTime); // Assure que le bouton fonctionne aussi
+
+            // Listener pour le bouton "Morceau suivant"
+            nextTrackButton.addEventListener('click', () => {
+                if (isLoading) return; // Ne rien faire si déjà en chargement
+                if (!radioHasStarted) {
+                    startRadioFirstTime(); // Démarre si ce n'est pas déjà fait
+                } else {
+                    loadNextTrack(); // Charge la piste suivante
+                }
+            });
+
+            // Gestion hors ligne / en ligne (optionnel mais utile)
+            window.addEventListener('offline', () => {
+                console.warn("Mode hors ligne détecté.");
+                // Pourrait afficher un message spécifique si l'iframe ne charge pas
+                if (!document.getElementById('suno-iframe') && radioHasStarted) {
+                     iframeTarget.innerHTML = '<p class="loading-message">Connexion perdue. Tentative de reconnexion...</p>';
+                     nowPlayingText.textContent = 'Mode hors ligne';
+                }
+                if (nextTrackTimer) clearTimeout(nextTrackTimer); // Arrête le timer auto si hors ligne
+            });
+            window.addEventListener('online', () => {
+                 console.log("Retour en ligne détecté.");
+                // Si la radio tournait et qu'il n'y a pas de lecteur actif, essaie de relancer
+                if (radioHasStarted && !document.getElementById('suno-iframe') && !isLoading) {
+                     console.log("Tentative de rechargement après retour en ligne.");
+                     loadNextTrack();
+                }
+            });
+        }
+
+        // Initialisation (modifiée pour enlever updateCategoryButtons)
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM chargé. Initialisation de la radio.");
+            // Vérification cruciale: la liste des pistes existe-t-elle et n'est-elle pas vide?
+            if (typeof sunoTracks === 'undefined' || !sunoTracks || sunoTracks.length === 0) {
+                console.error("Erreur critique : La liste 'sunoTracks' est vide ou non définie !");
+                // Affiche un message d'erreur clair à l'utilisateur
+                preloader.classList.add('hidden'); // Cache le preloader
+                initialOverlay.innerHTML = '<p class="loading-message" style="color: red; font-weight: bold;">Erreur: Impossible de charger la liste des morceaux. L\'application ne peut pas démarrer.</p>';
+                // Empêche toute autre initialisation
+                return; 
+            }
+            
+            setupEventListeners(); // Met en place les écouteurs d'événements
+
+            // Cache le préchargeur une fois que la page est complètement chargée (ressources incluses)
+            window.addEventListener('load', () => {
+                console.log("Page entièrement chargée (ressources incluses).");
+                preloader.classList.add('hidden');
+            });
+
+            // Enregistrement du Service Worker (gardé tel quel)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js') // Chemin relatif au root
+                    .then((registration) => {
+                        console.log('Service Worker enregistré avec succès. Scope:', registration.scope);
+                    })
+                    .catch(err => {
+                        console.error('Échec de l\'enregistrement du Service Worker:', err);
+                    });
+            }
+        });
+    </script>
 </body>
 </html>
